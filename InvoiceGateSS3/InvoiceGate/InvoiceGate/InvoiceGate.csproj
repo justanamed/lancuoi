@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\font\" />
+    <Folder Include="wwwroot\THAYTHE\" />
     <Folder Include="wwwroot\PDF\" />
   </ItemGroup>
 

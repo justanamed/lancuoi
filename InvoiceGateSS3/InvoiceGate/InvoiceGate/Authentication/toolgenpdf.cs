@@ -29,6 +29,20 @@ namespace InvoiceGate.Authentication
             System.IO.Compression.ZipFile.ExtractToDirectory(zipPath, extractPath);
 
         }
+        public static void unzipthaythe(string s, IHostingEnvironment _env)
+        {
+            string[] files = Directory.GetFiles(_env.WebRootPath + "/THAYTHE", "*", SearchOption.AllDirectories);
+            foreach (string file in files)
+            {
+                System.IO.File.Delete(file);
+            }
+            string filePath = _env.WebRootPath + "/THAYTHE/Myfile.zip";
+            System.IO.File.WriteAllBytes(filePath, Convert.FromBase64String(s));
+            string zipPath = _env.WebRootPath + "/THAYTHE/Myfile.zip";
+            string extractPath = _env.WebRootPath + "/THAYTHE";
+            System.IO.Compression.ZipFile.ExtractToDirectory(zipPath, extractPath);
+
+        }
         public static string ApplyXSLTransformation(IHostingEnvironment _env)
         {
             string strHtml;

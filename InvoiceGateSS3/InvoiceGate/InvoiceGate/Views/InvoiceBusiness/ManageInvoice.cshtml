@@ -18,6 +18,7 @@
         cursor: pointer;
     }
 </style>
+<h1></h1>
 <h1>@ViewBag.cac</h1>
 <p id="cc"></p>
 <div class="container-fluid p-0">
@@ -143,13 +144,102 @@
                             <td>@item.total</td>
                             <td>@item.currency</td>
                             <td><p class="btn border bg-white"><i onclick="teamchungta('@item.invoiceNo.ToString()','@item.templateCode','@item.supplierTaxCode')" class="fa fa-eye text-white" style="color:#5337b1 !important; cursor:pointer"></i></p></td>
-                            <td><p class="btn border bg-danger"><i onclick="mohoadon('@item.invoiceNo.ToString()','@item.templateCode','@item.supplierTaxCode')" class="fas fa-file-invoice text-white" style="color:white     !important; cursor:pointer"></i></p></td>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-danger" type="button" data-toggle="dropdown">
+                                        <i class="fas fa-tools"></i>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <button data-url='@Url.Action("ReplaceInvoice","InvoiceBusiness",new { taxcode = @item.supplierTaxCode, ivno = @item.invoiceNo, tmplatecode =@item.templateCode })' class="js-reload-details text-left btn w-100">
+                                                <i class="fas fa-sync text-white" style="color:#d03434 !important"></i><span class="pl-2 font-weight-bold">Thay thế</span>
+                                            </button>
+                                        </li>
+                                        <li class="dropdown-divider"></li>
+                                        <li>
+                                            <button data-url='@Url.Action("ReplaceInvoice","InvoiceBusiness",new { taxcode = @item.supplierTaxCode, ivno = @item.invoiceNo, tmplatecode =@item.templateCode })' class="js-reload-details text-left btn w-100">
+                                                <i class="fas fa-pen text-white" style="color:#d03434 !important"></i> <span class="pl-2 font-weight-bold">Điều chỉnh</span>
+                                            </button>
+                                        </li>
+                                        <li class="dropdown-divider"></li>
+                                        <li>
+                                            <button data-url='@Url.Action("ReplaceInvoice","InvoiceBusiness",new { taxcode = @item.supplierTaxCode, ivno = @item.invoiceNo, tmplatecode =@item.templateCode })' class="js-reload-details text-left btn w-100">
+                                                <i class="fas fa-file-import text-white" style="color:#d03434 !important"></i> <span class="pl-2 font-weight-bold">Chuyển đổi</span>
+                                            </button>
+                                        </li>
+                                        <li class="dropdown-divider"></li>
+                                        <li>
+                                            <button data-url='@Url.Action("ReplaceInvoice","InvoiceBusiness",new { taxcode = @item.supplierTaxCode, ivno = @item.invoiceNo, tmplatecode =@item.templateCode })' class="js-reload-details text-left btn w-100">
+                                                <i class="fas fa-trash text-white" style="color:#d03434 !important"></i> <span class="pl-2 font-weight-bold">Hủy</span>
+                                            </button>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </td>
                         </tr>
                     }
                 }
             </tbody>
         </table>
         <input id="ippp" type="hidden" class="col-12 flex-wrap" name="name" value="" />
+        <script>
+            $('.js-reload-details').on('click', function (evt) {
+                $('#machamay').empty();
+                $('#machamay').append('<div id="detailsDiv"></div>')
+                $('#thaythe').modal("show");
+                var $detailDiv = $('#detailsDiv'),
+                    url = $(this).data('url');
+
+                $.get(url, function (data) {
+                    $detailDiv.replaceWith(data);
+                });
+
+            });
+            function getfilethaythe() {
+
+            }
+        </script>
+        <div id="thaythe" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Modal Header</h4>
+                    </div>
+                    <div class="modal-body" id="machamay">
+                        <div  id="detailsDiv">
+
+                        </div>
+                        <p>Some text in the modal.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <p class="btn btn-danger" onclick="eyyyy()">nào nào</p>
+        <script>
+            function eyyyy() {
+                $.ajax({
+                    url: '@Url.Content("~/")' + "InvoiceBusiness/laythu",
+                    type: 'POST',
+                    data: {
+                        taxcode: "0100109106",
+                        ivno: "AB/19E0000746",
+                        tmplatecode: "01GTKT0/315"
+                        
+                    },
+                    dataType: 'json',
+                    success: function (data1) {
+                        alert(JSON.stringify(data1));
+                    }
+
+                    });
+            }
+        </script>
         <script>
             var c1;
             var c2;

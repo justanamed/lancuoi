@@ -66,13 +66,13 @@ namespace InvoiceGate.Controllers.Manage
             return View();
         }
         [HttpPost]
-        public JsonResult laphoadon(string query,string mst)
+        public JsonResult laphoadon(string query, string mst)
         {
             while (query.Contains("\\"))
             {
-                query.Replace("\\","");
+                query.Replace("\\", "");
             }
-            var responce = CreateRequest.webRequest("https://demo-sinvoice.viettel.vn:8443/InvoiceAPI/InvoiceWS/createInvoice/"+mst,query,Authen.AuthString,"POST", "application/json");
+            var responce = CreateRequest.webRequest("https://demo-sinvoice.viettel.vn:8443/InvoiceAPI/InvoiceWS/createInvoice/" + mst, query, Authen.AuthString, "POST", "application/json");
             return Json(responce);
 
         }
@@ -80,7 +80,7 @@ namespace InvoiceGate.Controllers.Manage
         {
             System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
             dtDateTime = dtDateTime.AddMilliseconds(unixtime).ToLocalTime();
-      
+
             return dtDateTime;
         }
         [HttpPost]
@@ -91,12 +91,12 @@ namespace InvoiceGate.Controllers.Manage
             string denngay = collect["ngaylaphd2"];
             if (collect["ngaylaphd1"] == collect["ngaylaphd2"])
             {
-                tungay  = DateTime.Parse(tungay).AddDays(-1).ToString("yyyy-MM-dd") ;
+                tungay = DateTime.Parse(tungay).AddDays(-1).ToString("yyyy-MM-dd");
             }
-            string query = "{\"startDate\" : \""+ tungay + "\",\"endDate\" : \""+ denngay + "\",\"rowPerPage\" : 10000,\"pageNum\" : 1}";
+            string query = "{\"startDate\" : \"" + tungay + "\",\"endDate\" : \"" + denngay + "\",\"rowPerPage\" : 10000,\"pageNum\" : 1}";
             var responce = CreateRequest.webRequest("https://demo-sinvoice.viettel.vn:8443/InvoiceAPI/InvoiceUtilsWS/getInvoices/0100109106", query, Authen.AuthString, "POST", "application/json");
             vi = JsonConvert.DeserializeObject<listInvoice>(responce);
-            List<InvoiceInformation> s =  vi.invoices.DefaultIfEmpty().ToList();
+            List<InvoiceInformation> s = vi.invoices.DefaultIfEmpty().ToList();
             foreach (InvoiceInformation temp in s)
             {
                 temp.issueDate = DateTime.Parse(UnixTimeToDateTime(long.Parse(temp.issueDate)).ToString()).ToString("dd/MM/yyyy HH:mm:ss");
@@ -106,7 +106,7 @@ namespace InvoiceGate.Controllers.Manage
         [HttpPost]
         public JsonResult getzip(string zip)
         {
-            var base64EncodedBytes = System.Convert.FromBase64String(zip);
+            
             toolgenpdf.unzip(zip, _env);
             return Json(toolgenpdf.ApplyXSLTransformation(_env));
 
@@ -115,7 +115,7 @@ namespace InvoiceGate.Controllers.Manage
         public JsonResult viewinvoice(string query)
         {
 
-            string response = CreateRequest.webRequest("https://demo-sinvoice.viettel.vn:8443/InvoiceAPI/InvoiceUtilsWS/getInvoiceRepresentationFile",query, Authen.AuthString, "POST", "application/json");
+            string response = CreateRequest.webRequest("https://demo-sinvoice.viettel.vn:8443/InvoiceAPI/InvoiceUtilsWS/getInvoiceRepresentationFile", query, Authen.AuthString, "POST", "application/json");
             if (response != "")
             {
                 var item = Json(response);
@@ -131,11 +131,21 @@ namespace InvoiceGate.Controllers.Manage
         {
             return View();
         }
-        public async Task<IActionResult> ReplaceInvoice()
+     
+        [HttpGet]
+        public async Task<IActionResult> ReplaceInvoice(string taxcode, string ivno, string tmplatecode)
         {
+            RootObject r = new RootObject();
+            string query = "{ \"supplierTaxCode\":\"" + taxcode + "\",\"invoiceNo\":\"" + ivno + "\",\"templateCode\":\"" + tmplatecode + "\",\"fileType\":\"ZIP\"}";
+            var response = CreateRequest.webRequest("https://demo-sinvoice.viettel.vn:8443/InvoiceAPI/InvoiceUtilsWS/getInvoiceRepresentationFile", query, Authen.AuthString, "POST", "application/json");
+            if (response != "")
+            {
+                r = JsonConvert.DeserializeObject<RootObject>(response);
+            }
+            toolgenpdf.unzipthaythe(r.fileToBytes, _env);
             invoice invoicetemp = new invoice();
             XmlDocument doc = new XmlDocument();
-            string[] filePaths = Directory.GetFiles(_env.WebRootPath + "/PDF/", "*.xml", SearchOption.AllDirectories);
+            string[] filePaths = Directory.GetFiles(_env.WebRootPath + "/THAYTHE/", "*.xml", SearchOption.AllDirectories);
             FileStream fs = new FileStream(filePaths[0], FileMode.Open, FileAccess.Read);
             doc.Load(fs);
             using (var stringWriter = new StringWriter())
@@ -145,13 +155,11 @@ namespace InvoiceGate.Controllers.Manage
                 xmlTextWriter.Flush();
                 Serializer seri = new Serializer();
                 invoicetemp = seri.Deserialize<invoice>(stringWriter.GetStringBuilder().ToString());
-                return PartialView("ReplaceInvoice", invoicetemp);
+
             }
-
-            return PartialView("ReplaceInvoice");
-
+            fs.Close();
+            return PartialView("ReplaceInvoice", invoicetemp);
         }
-       
         public IActionResult RepairInvoice()
         {
             return View();

@@ -129,7 +129,7 @@ namespace InvoiceGate.Models
     public class Items
     {
         [XmlElement(ElementName = "item", Namespace = "http://laphoadon.gdt.gov.vn/2014/09/invoicexml/v1")]
-        public Item Item { get; set; }
+        public List<Item> Item { get; set; }
     }
 
     [XmlRoot(ElementName = "invoiceTaxBreakdowns", Namespace = "http://laphoadon.gdt.gov.vn/2014/09/invoicexml/v1")]

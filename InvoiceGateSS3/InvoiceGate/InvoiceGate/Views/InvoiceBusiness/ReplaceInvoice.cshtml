@@ -1,486 +1,540 @@
 ﻿@{
     ViewData["Title"] = "Replace";
-    Layout = "~/Views/Shared/_Managelayout.cshtml";
+    Layout = null;
 }
-<h1>@ViewBag.usename</h1>
+@model InvoiceGate.Models.invoice
 @*aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa*@
+    <form>
+        <h1>@ViewBag.vailinhhon</h1>
+        <div class="row">
+            <div class="col-6">
+                <h1>@Model.InvoiceData.InvoiceTaxBreakdowns.VatTaxAmount</h1>
+                <fieldset class="border p-2 gr-box">
+                    <legend class="w-auto">Thông tin khách hàng:</legend>
+                    <div class="container-fluid">
+                        <div class="row pb-4">
+                            <div class="col-12">
+                                <div class="row pb-4">
+                                    <div class="col-3"><label>Số điện thoại</label></div>
+                                    <div class="col-9"><input id="sodt_nguoimua" asp-for="InvoiceData.Buyer.BuyerPhoneNumber" name="sodt_nguoimua" class="w-100 form-control" /></div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-3"><label>Tên người mua</label></div>
+                                    <div class="col-9"><input id="tennm" name="tennm" asp-for="InvoiceData.Buyer.BuyerDisplayName" class="w-100 form-control" /></div>
+                                </div>
+                            </div>
 
-<form>
-    <div class="row">
-        <div class="col-6">
-            <fieldset class="border p-2 gr-box">
-                <legend class="w-auto">Thông tin khách hàng:</legend>
-                <div class="container-fluid">
-                    <div class="row pb-4">
-                        <div class="col-12">
-                            <div class="row pb-4">
-                                <div class="col-3"><label>Số điện thoại</label></div>
-                                <div class="col-9"><input id="sodt_nguoimua" name="sodt_nguoimua" class="w-100 form-control" /></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-3"><label>Mã khách hàng</label></div>
+                                    <div class="col-9"><input id="makh" name="makh" asp-for="InvoiceData.Buyer.BuyerCode" class="w-100 form-control" /></div>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-3"><label>Tên người mua</label></div>
-                                <div class="col-9"><input id="tennm" name="tennm" class="w-100 form-control" /></div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row pb-4">
+                                    <div class="col-3"><label>Địa chỉ</label></div>
+                                    <div class="col-9"><input id="diachi_nguoimua" name="diachi_nguoimua" asp-for="InvoiceData.Buyer.BuyerAddressLine" class="w-100 form-control" /></div>
+                                </div>
                             </div>
                         </div>
+                        <div class="row">
 
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-3"><label>Mã khách hàng</label></div>
-                                <div class="col-9"><input id="makh" name="makh" class="w-100 form-control" /></div>
+                            <div class="col-12">
+                                <div class="row pb-4">
+                                    <div class="col-3"><label>Email</label></div>
+                                    <div class="col-9"><input id="email_nguoimua" name="email_nguoimua" asp-for="InvoiceData.Buyer.BuyerEmail" class="w-100 form-control" /></div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="row pb-4">
-                                <div class="col-3"><label>Địa chỉ</label></div>
-                                <div class="col-9"><input id="diachi_nguoimua" name="diachi_nguoimua" class="w-100 form-control" /></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
 
-                        <div class="col-12">
-                            <div class="row pb-4">
-                                <div class="col-3"><label>Email</label></div>
-                                <div class="col-9"><input id="email_nguoimua" name="email_nguoimua" class="w-100 form-control" /></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row pb-4">
+                                    <div class="col-3"><label>Mã số thuế</label></div>
+                                    <div class="col-9"><input id="mst_nguoimua" name="mst_nguoimua" asp-for="InvoiceData.Buyer.BuyerTaxCode" class="w-100 form-control" /></div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="row pb-4">
+                                    <div class="col-3"><label>Số fax</label></div>
+                                    <div class="col-9"><input id="sofax" name="sofax" asp-for="InvoiceData.Buyer.BuyerFaxNumber" class="w-100 form-control" /></div>
+                                </div>
                             </div>
                         </div>
-
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="row pb-4">
-                                <div class="col-3"><label>Mã số thuế</label></div>
-                                <div class="col-9"><input id="mst_nguoimua" name="mst_nguoimua" class="w-100 form-control" /></div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row pb-4">
+                                    <div class="col-3"><label>Tên đơn vị</label></div>
+                                    <div class="col-9"><input id="tdv_nguoimua" name="tvd_nguoimua" asp-for="InvoiceData.Buyer.BuyerLegalName" class="w-100 form-control" /></div>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-12">
-                            <div class="row pb-4">
-                                <div class="col-3"><label>Số fax</label></div>
-                                <div class="col-9"><input id="sofax" name="sofax" class="w-100 form-control" /></div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row pb-4">
+                                    <div class="col-3"><label>Số tài khoản ngân hàng</label></div>
+                                    <div class="col-9"><input id="sonh_nguoimua" name="sonh_nguoimua" asp-for="InvoiceData.Buyer.BuyerBankAccount" class="w-100 form-control" /></div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="row pb-4">
-                                <div class="col-3"><label>Tên đơn vị</label></div>
-                                <div class="col-9"><input id="tdv_nguoimua" name="tvd_nguoimua" class="w-100 form-control" /></div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row pb-4">
+                                    <div class="col-3"><label>Tên ngân hàng</label></div>
+                                    <div class="col-9"><input id="tnh_nguoimua" name="tnh_nguoimua" asp-for="InvoiceData.Buyer.BuyerBankName" class="w-100 form-control" /></div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="row pb-4">
-                                <div class="col-3"><label>Số tài khoản ngân hàng</label></div>
-                                <div class="col-9"><input id="sonh_nguoimua" name="sonh_nguoimua" class="w-100 form-control" /></div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row pb-4">
+                                    <div class="col-3"><label>Loại giấy tờ</label></div>
+                                    <div class="col-9">
+                                        <select id="loaigiayto" name="loaigiayto" asp-for="InvoiceData.Buyer.BuyerIdType" class="w-100 form-control">
+                                            <option value="1">CMND</option>
+                                            <option value="2">Hộ chiếu</option>
+                                            <option value="3">Giấy phép kinh doanh</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="row pb-4">
-                                <div class="col-3"><label>Tên ngân hàng</label></div>
-                                <div class="col-9"><input id="tnh_nguoimua" name="tnh_nguoimua" class="w-100 form-control" /></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="row pb-4">
-                                <div class="col-3"><label>Loại giấy tờ</label></div>
-                                <div class="col-9">
-                                    <select id="loaigiayto" name="loaigiayto" class="w-100 form-control">
-                                        <option value="1">CMND</option>
-                                        <option value="2">Hộ chiếu</option>
-                                        <option value="3">Giấy phép kinh doanh</option>
-                                    </select>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row pb-4">
+                                    <div class="col-3"><label>Số giấy tờ</label></div>
+                                    <div class="col-9"><input id="sogiayto" name="sogiayto" asp-for="InvoiceData.Buyer.BuyerIdNo" class="w-100 form-control" /></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="row pb-4">
-                                <div class="col-3"><label>Số giấy tờ</label></div>
-                                <div class="col-9"><input id="sogiayto" name="sogiayto" class="w-100 form-control" /></div>
+                </fieldset>
+            </div>
+            <div class="col-6">
+                <fieldset class="border p-2 gr-box">
+                    <legend class="w-auto">Thông tin người bán:</legend>
+                    <div class="container-fluid">
+                        <div class="row pb-4">
+                            <div class="col-12">
+                                <div class="row pb-4">
+                                    <div class="col-3"><label>Mã số thuế</label></div>
+                                    <div class="col-9"><input id="mst_benban" name="mst_benban" asp-for="InvoiceData.Seller.SellerTaxCode" class="w-100 form-control" /></div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-3"><label>Tên đơn vị</label></div>
+                                    <div class="col-9"><input id="tdv_benban" name="tdv_benban" asp-for="InvoiceData.Seller.SellerLegalName" class="w-100 form-control" /></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row pb-4">
+                            <div class="col-12">
+                                <div class="row pb-4">
+                                    <div class="col-3"><label>Địa chỉ</label></div>
+                                    <div class="col-9"><input id="diachi_benban" name="diachi_benban" asp-for="InvoiceData.Seller.SellerAddressLine" class="w-100 form-control" /></div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-3"><label>Số điện thoại</label></div>
+                                    <div class="col-9"><input id="sdt_benban" name="sdt_benban" asp-for="InvoiceData.Seller.SellerPhoneNumber" class="w-100 form-control" /></div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row pb-4">
+                            <div class="col-12">
+                                <div class="row pb-4">
+                                    <div class="col-3"><label>Địa chỉ Email</label></div>
+                                    <div class="col-9"><input id="email_benban" name="email_benban" asp-for="InvoiceData.Seller.SellerEmail" class="w-100 form-control" /></div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-3"><label>Số tài khoản</label></div>
+                                    <div class="col-9"><input id="stk_benban" name="stk_benban" asp-for="InvoiceData.Seller.SellerBankAccount" class="w-100 form-control" /></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row pb-4">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-3"><label>Tên ngân hàng</label></div>
+                                    <div class="col-9"><input id="tennganhang" name="tennganhang" asp-for="InvoiceData.Seller.SellerBankName" class="w-100 form-control" /></div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </fieldset>
+                </fieldset>
+
+                <fieldset class="border p-2 gr-box">
+                    <legend class="w-auto">Thông tin hóa đơn gốc:</legend>
+                    <div class="container-fluid">
+                        <div class="row pb-4">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-3"><label>Mẫu hóa đơn gốc</label></div>
+                                    <div class="col-9">
+                                        <input type="text" id="ipmhd" name="ipmhd" class="w-100 form-control" value="@Model.InvoiceData.TemplateCode" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row pb-4">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-3"><label>Mã hóa đơn gốc</label></div>
+                                    <div class="col-9"><input id="kihieu" name="kihieu" value="@Model.InvoiceData.InvoiceSeries@Model.InvoiceData.InvoiceNumber" class="w-100 form-control" /></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row pb-4">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-3"><label>Ngày lập hóa đơn gốc</label></div>
+                                    <div class="col-9"><input id="kihieu" name="kihieu" asp-for="InvoiceData.InvoiceIssuedDate" class="w-100 form-control" /></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </div>
         </div>
-        <div class="col-6">
-            <fieldset class="border p-2 gr-box">
-                <legend class="w-auto">Thông tin người bán:</legend>
-                <div class="container-fluid">
-                    <div class="row pb-4">
-                        <div class="col-12">
-                            <div class="row pb-4">
-                                <div class="col-3"><label>Mã số thuế</label></div>
-                                <div class="col-9"><input id="mst_benban" name="mst_benban" class="w-100 form-control" /></div>
+        <div class="row">
+            <div class="col-6">
+                <fieldset class="border p-2 gr-box">
+                    <legend class="w-auto">Thông tin giao dịch:</legend>
+                    <div class="container-fluid">
+                        <div class="row pb-4">
+                            <div class="col-12">
+                                <div class="row pb-4">
+                                    <div class="col-3"><label>Hình thức thanh toán</label></div>
+                                    <div class="col-9">
+                                        <select id="hinhthuctt" name="hinhthuctt" asp-for="InvoiceData.Payments.Payment.PaymentMethodName" class="form-control w-100">
+                                            <option value="CK">Chuyển khoản</option>
+                                            <option value="DTCN">DTCN</option>
+                                            <option value="KHAC">Khác</option>
+                                            <option value="TM">Chuyển tiền mặt</option>
+                                            <option value="TM/CK">Chuyển khoản</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-3"><label>Tên đơn vị</label></div>
-                                <div class="col-9"><input id="tdv_benban" name="tdv_benban" class="w-100 form-control" /></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row pb-4">
-                        <div class="col-12">
-                            <div class="row pb-4">
-                                <div class="col-3"><label>Địa chỉ</label></div>
-                                <div class="col-9"><input id="diachi_benban" name="diachi_benban" class="w-100 form-control" /></div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-3"><label>Số điện thoại</label></div>
-                                <div class="col-9"><input id="sdt_benban" name="sdt_benban" class="w-100 form-control" /></div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="row pb-4">
-                        <div class="col-12">
-                            <div class="row pb-4">
-                                <div class="col-3"><label>Địa chỉ Email</label></div>
-                                <div class="col-9"><input id="email_benban" name="email_benban" class="w-100 form-control" /></div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-3"><label>Số tài khoản</label></div>
-                                <div class="col-9"><input id="stk_benban" name="stk_benban" class="w-100 form-control" /></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row pb-4">
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-3"><label>Tên ngân hàng</label></div>
-                                <div class="col-9"><input id="tennganhang" name="tennganhang" class="w-100 form-control" /></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </fieldset>
-
-            <fieldset class="border p-2 gr-box">
-                <legend class="w-auto">Thông tin hóa đơn gốc:</legend>
-                <div class="container-fluid">
-                    <div class="row pb-4">
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-3"><label>Mẫu hóa đơn gốc</label></div>
-                                <div class="col-9">
-                                    <input type="text" id="ipmhd" name="ipmhd" class="w-100 form-control" value="" />
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-3"><label>Loại tiền</label></div>
+                                    <div class="col-9">
+                                        <select id="loaitien" name="loaitien" onchange="tinhtongtien()" asp-for="InvoiceData.CurrencyCode" class="form-control w-100">
+                                            <option value="USD">USD</option>
+                                            <option value="VND">Việt Nam đồng</option>
+                                            <option value="EUR">Euro</option>
+                                            <option value="JPY">Yên Nhật</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row pb-4">
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-3"><label>Mã hóa đơn gốc</label></div>
-                                <div class="col-9"><input id="kihieu" name="kihieu" class="w-100 form-control" /></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row pb-4">
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-3"><label>Ngày lập hóa đơn gốc</label></div>
-                                <div class="col-9"><input id="kihieu" name="kihieu" class="w-100 form-control" /></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-            </fieldset>
-                                        </div >
-                                    </div >
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <fieldset class="border p-2 gr-box">
-                                                    <legend class="w-auto">Thông tin giao dịch:</legend>
-                                                    <div class="container-fluid">
-                                                        <div class="row pb-4">
-                                                            <div class="col-12">
-                                                                <div class="row pb-4">
-                                                                    <div class="col-3"><label>Hình thức thanh toán</label></div>
-                                                                    <div class="col-9">
-                                                                        <select id="hinhthuctt" name="hinhthuctt" class="form-control w-100">
-                                                                            <option value="CK">Chuyển khoản</option>
-                                                                            <option value="DTCN">DTCN</option>
-                                                                            <option value="KHAC">Khác</option>
-                                                                            <option value="TM">Chuyển tiền mặt</option>
-                                                                            <option value="TM/CK">Chuyển khoản</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-12">
-                                                                <div class="row">
-                                                                    <div class="col-3"><label>Loại tiền</label></div>
-                                                                    <div class="col-9">
-                                                                        <select id="loaitien" name="loaitien" onchange="tinhtongtien()" class="form-control w-100">
-                                                                            <option value="USD">USD</option>
-                                                                            <option value="VND">Việt Nam đồng</option>
-                                                                            <option value="EUR">Euro</option>
-                                                                            <option value="JPY">Yên Nhật</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </fieldset>
-                                            </div>
-                                            <div class="col-6">
-                                                <fieldset class="border p-2 gr-box">
-                                                    <legend class="w-auto">Thông tin bổ sung:</legend>
-                                                    <div class="container-fluid">
-                                                        <div class="row pb-4">
-                                                            <div class="col-12">
-                                                                <div class="row pb-4">
-                                                                    <div class="col-3"><label>Ngày thỏa thuận</label></div>
-                                                                    <div class="col-9 input-group date" id="datetimepicker3">
-                                                                        <input id="ngaylaphd1" name="ngaylaphd1" type="text" class="form-control " value="" required />
-                                                                        <span class="input-group-addon">
-                                                                            <i class="fas fa-calendar"></i>
-                                                                        </span>
-                                                                    </div>
-                                                                    <script>
-                                                                        $('#datetimepicker3').datetimepicker({
-                                                                            format: 'YYYY-MM-DD',
-                                                                        });
-
-                                                                        /**/</script>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-12">
-                                                                <div class="row">
-                                                                    <div class="col-3"><label>Chú thích:</label></div>
-                                                                    <div class="col-9"><input id="stk_benban" name="stk_benban" value="Hóa đơn thay thế cho hóa đơn điện tử mẫu 02GTTT0/176 ký hiệu AB/19E số 0000220 lập ngày 22/11/2019" class="w-100 form-control" /></div>
-                                                                </div>
-                                                            </div>
-                                                            <br /> <br />
-                                                            <div class="col-12">
-                                                                <div class="row">
-                                                                    <div class="col-12"><label style="color:red">*Lưu ý: chú thích viết theo mẫu đã có sẵn</label></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </fieldset>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <style>
-                                                    th, td {
-                                                        font - size: 10pt !important;
-                                                    text-align: center !important;
-                                                }
-
-                                                table {
-                                                        table - layout: fixed !important;
-                                                }
-
-                                                    table td, table td input {
-                                                        word - wrap: break-word !important;
-                                                }
-                                            </style>
-                                                <fieldset class="border p-2 gr-box">
-                                                    <legend class="w-auto">Chi tiết hóa đơn</legend>
-                                                    <div class="container-fluid">
-                                                        <table id="tbl_posts" class=" table table-hover table-bordered w-100 table-item">
-                                                            <thead class="border-0">
-                                                                <tr>
-                                                                    <th class="d-lg-table-cell ">STT</th>
-                                                                    <th class="d-lg-table-cell ">Điều chỉnh</th>
-                                                                    <th class="d-lg-table-cell ">Mã sản phẩm</th>
-                                                                    <th class="d-lg-table-cell ">Tên sản phẩm</th>
-                                                                    <th class="d-lg-table-cell ">Đơn vị tính</th>
-                                                                    <th class="d-lg-table-cell ">Số lô</th>
-                                                                    <th class="d-lg-table-cell ">Hạn dùng</th>
-                                                                    <th class="d-lg-table-cell ">Số lượng</th>
-                                                                    <th class="d-lg-table-cell ">Đơn giá</th>
-                                                                    <th class="d-lg-table-cell ">Thành tiền</th>
-                                                                    <th class="d-lg-table-cell ">Ghi chú</th>
-                                                                    <th class="d-lg-table-cell "> Xóa</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody id="tbl_posts_body"></tbody>
-                                                        </table>
-                                                        <div style="display:none;">
-                                                            <table id="sample_table">
-                                                                <tr id="" class="package-row">
-                                                                    <td><span class="sn"></span>.</td>
-                                                                    <td>Hàng hóa</td>
-                                                                    <td contenteditable="true"></td>
-                                                                    <td contenteditable="true"></td>
-                                                                    <td contenteditable="true"></td>
-                                                                    <td contenteditable="true"></td>
-                                                                    <td contenteditable="true"></td>
-                                                                    <td contenteditable="true" name="numberUsed" id="numberUsed" onkeyup="getValues()"></td>
-                                                                    <td contenteditable="true" id="price" onkeyup="getValues()"></td>
-                                                                    <td onchange="tinhtongtien()" class="thanhtien" name="revenue" id="revenue"></td>
-                                                                    <td contenteditable="true" name="value" id="value"></td>
-                                                                    <td><a class="btn btn-xs delete-record" data-id="0"><i class="fa fa-trash"></i></a></td>
-                                                                </tr>
-                                                            </table>
-                                                        </div>
-                                                        <div class="well clearfix">
-                                                            <a class="btn btn-primary pull-right add-record" data-added="0"><i class="glyphicon glyphicon-plus"></i> Add Row</a>
-                                                        </div>
-                                                        <script>
-                                                            jQuery(document).delegate('a.add-record', 'click', function (e) {
-                                                                e.preventDefault();
-                                                            var content = jQuery('#sample_table tr'),
-                                                                size = jQuery('#tbl_posts >tbody >tr').length + 1,
-                                                                element = null,
-                                                                element = content.clone();
-                                                            element.attr('id', 'rec-' + size);
-                                                            element.find('.delete-record').attr('data-id', size);
-                                                            element.appendTo('#tbl_posts_body');
-                                                            element.find('.sn').html(size);
-                                                        });
-
-                                                        jQuery(document).delegate('a.delete-record', 'click', function (e) {
-
-                                                                e.preventDefault();
-                                                            //var didConfirm = confirm("Are you sure You want to delete");
-                                                            //if (didConfirm == true) {
-                                                            var id = jQuery(this).attr('data-id');
-                                                            var targetDiv = jQuery(this).attr('targetDiv');
-                                                            jQuery('#rec-' + id).remove();
-
-                                                            //regnerate index number on table
-                                                            $('#tbl_posts_body tr').each(function (index) {
-                                                                //alert(index);
-                                                                $(this).find('span.sn').html(index + 1);
-                                                        });
-                                                        tinhtongtien();
-                                                        return true;
-                                                            //} else {
-                                                                //    return false;
-                                                                //}
-                                                            });
-                                </script>
-                                <div id="thue">
-                                </div>
-                                <div class="row pl-3 pt-4">
-                                    <p class="text-danger col-2">Tổng tiền bằng chữ:</p>
-                                    <p class="font-italic font-weight-bolder col-9" id="tienbangchu"></p>
-                                </div>
-                                <div id="extrafield">
+                </fieldset>
+            </div>
+            <div class="col-6">
+                <fieldset class="border p-2 gr-box">
+                    <legend class="w-auto">Thông tin bổ sung:</legend>
+                    <div class="container-fluid">
+                        <div class="row pb-4">
+                            <div class="col-12">
+                                <div class="row pb-4">
+                                    <div class="col-3"><label>Ngày thỏa thuận</label></div>
+                                    <div class="col-9 input-group date" id="datetimepicker3">
+                                        <input id="ngaylaphd1" name="ngaylaphd1" type="text" class="form-control " value="" required />
+                                        <span class="input-group-addon">
+                                            <i class="fas fa-calendar"></i>
+                                        </span>
+                                    </div>
                                     <script>
+                                        $('#datetimepicker3').datetimepicker({
+                                            format: 'YYYY-MM-DD',
+                                        });
 
-
-                                                                function tinhthue() {
-                                                                    var tienthue = $('#tienthue').val();
-                                                                var tientruocthue = $('#tientruocthue').val();
-                                                                var chietkhau = parseFloat($('#chietkhau').val());
-                                                                    if ($('#tienthue').val() >= 0) {
-                                                                    document.getElementById("tongtienthue").value = (tienthue * tientruocthue) / 100;
-                                                                document.getElementById("tongtienhang").value = (parseFloat(tientruocthue) + parseFloat($('#tongtienthue').val())) - parseFloat(chietkhau);
-                                                                document.getElementById("tienbangchu").innerHTML = DocTienBangChu(document.getElementById("tongtienhang").value) + " " + $("#loaitien :selected").text();
-                                                            }
-                                                                    else {
-                                                                    document.getElementById("tongtienthue").value = 0;
-                                                                document.getElementById("tongtienhang").value = (parseFloat(tientruocthue) + 0) - parseFloat(chietkhau);
-                                                                document.getElementById("tienbangchu").innerHTML = DocTienBangChu(document.getElementById("tongtienhang").value) + " " + $("#loaitien :selected").text();
-                                                            }
-                                                        };
-                                                        //đang sử tại đây
-                                                                function thaythue() {
-                                                                    var temp = parseFloat(document.getElementById("chietkhau").value);
-                                                                var temp2 = parseFloat(document.getElementById("tientruocthue").value);
-                                                                var temp3 = parseFloat(document.getElementById("tongtienthue").value);
-                                                                    if (temp > temp2 - temp3) {
-                                                                    alert("chiết khấu phải nhỏ hơn tổng tiền sau thuế");
-                                                                document.getElementById("chietkhau").value = 0;
-                                                            }
-                                                                    else {
-                                                                        var tienthue = $('#tienthue').val();
-                                                                var tientruocthue = $('#tientruocthue').val();
-                                                                var chietkhau = parseFloat($('#chietkhau').val());
-                                                                        if ($('#tienthue').val() >= 0) {
-                                                                    document.getElementById("tongtienthue").value = (tienthue * tientruocthue) / 100;
-                                                                document.getElementById("tongtienhang").value = (parseFloat(tientruocthue) + parseFloat($('#tongtienthue').val())) - parseFloat(chietkhau);
-                                                                document.getElementById("tienbangchu").innerHTML = DocTienBangChu(document.getElementById("tongtienhang").value) + " " + $("#loaitien :selected").text();
-                                                            }
-                                                                        else {
-                                                                    document.getElementById("tongtienthue").value = 0;
-                                                                document.getElementById("tongtienhang").value = (parseFloat(tientruocthue) + 0) - parseFloat(chietkhau);
-                                                                document.getElementById("tienbangchu").innerHTML = DocTienBangChu(document.getElementById("tongtienhang").value) + " " + $("#loaitien :selected").text();
-                                                            }
-                                                        }
-                                                    };
-                                                                $('#ipmhd').on("input", function () {
-                                                                    const myNode = document.getElementById("thue");
-                                                                    while (myNode.firstChild) {
-                                                                    myNode.removeChild(myNode.firstChild);
-                                                            }
-                                                                    if (document.getElementById("ipmhd").value.includes("01GTKT")) {
-                                                                    $('#thue').append('<div class="container gtgt">' +
-                                                                        '<div class="row">' +
-                                                                        '<div class="col-6"><div class="row pt-2">' +
-                                                                        '<p class="text-primary col-6">Tổng tiền hàng trước thuế</p>' +
-                                                                        '<input id="tientruocthue" type="text" class="form-control col-6" name="tientruocthue" value="" />' +
-                                                                        '</div><div class="row pt-2"><p class="text-primary col-6">Thuế</p>' +
-                                                                        '<select onchange="tinhthue()" id="tienthue" class="col-6 form-control" name="thue">' +
-                                                                        '<option value="-2">không thuế</option>' +
-                                                                        '<option value="0">0%</option>' +
-                                                                        '<option value="5">5%</option>' +
-                                                                        '<option value="10">10%</option>' +
-                                                                        '</select>' +
-                                                                        '</div>' +
-                                                                        '<div class="row pt-2"><p class="text-primary col-6">Tổng tiền thuế</p>' +
-                                                                        '<input id="tongtienthue" type="text" class="form-control col-6" name="tongtienthue" value="" /></div>' +
-                                                                        '<div class="row pt-2"><p class="text-primary col-6">Chiết khấu</p>' +
-                                                                        '<input id="chietkhau" onkeyup="thaythue()" type="text" class="form-control col-6" name="chietkhau" placeholder="Nhập chiết khấu" value="0" />' +
-                                                                        '</div><div class="row pt-2"><p class="text-primary col-6">Tổng tiền hàng</p>' +
-                                                                        '<input readonly onchange="hienthichu()" id="tongtienhang" type="text" class="form-control col-6" name="tongtienhang" value="" />' +
-                                                                        '</div></div> </div></div>');
-
-                                                        }
-                                                                    if (document.getElementById("ipmhd").value.includes("02GTTT")) {
-                                                                    $('#thue').append('<div class="container banhang"><div class="row pt-2"><p class="text-primary col-2">Tổng tiền hàng</p>' +
-                                                                        '<input readonly id="tongtienhang" type="text" class="form-control col-7" name="tongtienhang" value="" /></div> </div>');
-                                                        }
-                                                                    if (!document.getElementById("ipmhd").value.includes("01GTKT") && !document.getElementById("ipmhd").value.includes("02GTTT")) {
-                                                                        const parent = document.getElementById("thue")
-                                                                        while (parent.firstChild) {
-                                                                    parent.firstChild.remove();
-                                                            }
-                                                        }
-                                                    });
-
-
-
-                                    </script>
+                                        /**/</script>
                                 </div>
                             </div>
-
-                <!--------------------------------------------END STYLE Hiẻu ----------------------------------------------->
-            </fieldset>
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-3"><label>Chú thích:</label></div>
+                                    <div class="col-9"><input style="word-break: break-word !important" id="stk_benban" name="stk_benban" value="Hóa đơn thay thế cho hóa đơn điện tử mẫu 02GTTT0/176 ký hiệu AB/19E số 0000220 lập ngày 22/11/2019" class="w-100 form-control" /></div>
+                                </div>
+                            </div>
+                            <br /> <br />
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-12"><label style="color:red">*Lưu ý: chú thích viết theo mẫu đã có sẵn</label></div>
+                                </div>
+                            </div>
+                            <input  id="coutting" value="@Model.InvoiceData.Items.Item.Count" />
+                        </div>
+                       
+                    </div>
+                </fieldset>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <p id="testdulieu" class="form-control mt-3 ml-auto mr-auto col-10 text-danger bg-white text-center"></p>
-        <div class="col-5"></div>
-        <div class="col-6"><p onclick="laphoadon()" class="btn btn-primary mt-4 mr-auto ml-auto" type="button">Lập hóa đơn thay thế</p></div>
-        <script>
+
+        <div class="row">
+            <div class="col-12">
+                <style>
+                    th, td {
+                        font-size: 10pt !important;
+                        text-align: center !important;
+                    }
+
+                    table {
+                        table-layout: fixed !important;
+                    }
+
+                        table td, table td input {
+                            word-wrap: break-word !important;
+                        }
+                </style>
+                <fieldset class="border p-2 gr-box">
+                    <legend class="w-auto">Chi tiết hóa đơn</legend>
+                    <div class="container-fluid">
+                        <table id="tbl_posts" class=" table table-hover table-bordered w-100 table-item">
+                            <thead class="border-0">
+                                <tr>
+                                    <th class="d-lg-table-cell ">STT</th>
+                                    <th class="d-lg-table-cell ">Điều chỉnh</th>
+                                    <th class="d-lg-table-cell ">Mã sản phẩm</th>
+                                    <th class="d-lg-table-cell ">Tên sản phẩm</th>
+                                    <th class="d-lg-table-cell ">Đơn vị tính</th>
+                                    <th class="d-lg-table-cell ">Số lô</th>
+                                    <th class="d-lg-table-cell ">Hạn dùng</th>
+                                    <th class="d-lg-table-cell ">Số lượng</th>
+                                    <th class="d-lg-table-cell ">Đơn giá</th>
+                                    <th class="d-lg-table-cell ">Thành tiền</th>
+                                    <th class="d-lg-table-cell ">Ghi chú</th>
+                                    <th class="d-lg-table-cell "> Xóa</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbl_posts_body">
+                                @{ foreach (var item in Model.InvoiceData.Items.Item.Select((value, i) => new { i, value }))
+                                    {
+                                        var temp = item.i + 1;
+                                        <tr id="rec-@temp" class="package-row">
+                                            <td><span class="sn">@temp</span>.</td>
+                                            <td>Hàng hóa</td>
+                                            <td contenteditable="true">@item.value.ItemCode</td>
+                                            <td contenteditable="true">@item.value.ItemName</td>
+                                            <td contenteditable="true">@item.value.UnitName</td>
+                                            <td contenteditable="true">@item.value.BatchNo</td>
+                                            <td contenteditable="true">@item.value.ExpDate</td>
+                                            <td contenteditable="true" name="numberUsed" id="numberUsed" onkeyup="getValues()">@item.value.Quantity</td>
+                                            <td contenteditable="true" id="price" onkeyup="getValues()">@item.value.UnitPrice</td>
+                                            <td onchange="tinhtongtien()" class="thanhtien" name="revenue" id="revenue">@item.value.ItemTotalAmountWithoutVat</td>
+                                            <td contenteditable="true" name="value" id="value">@item.value.ItemNote</td>
+                                            <td><a class="btn btn-xs delete-record" data-id="@temp"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                                        </tr>
+                                      }
+                                    }
+                                </tbody>
+                        </table>
+                        <div style="display:none;">
+                            <table id="sample_table">
+                                <tr id="" class="package-row" >
+                                    <td><span class="sn"></span>.</td>
+                                    <td>Hàng hóa</td>
+                                    <td contenteditable="true"></td>
+                                    <td contenteditable="true"></td>
+                                    <td contenteditable="true"></td>
+                                    <td contenteditable="true"></td>
+                                    <td contenteditable="true"></td>
+                                    <td contenteditable="true" name="numberUsed" id="numberUsed" onkeyup="getValues()"></td>
+                                    <td contenteditable="true" id="price" onkeyup="getValues()"></td>
+                                    <td onchange="tinhtongtien()" class="thanhtien" name="revenue" id="revenue"></td>
+                                    <td contenteditable="true" name="value" id="value"></td>
+                                    <td><a class="btn btn-xs delete-record" data-id="0"><i class="fa fa-trash"></i></a></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="well clearfix">
+                            <a class="btn btn-primary pull-right add-record" data-added="0"><i class="glyphicon glyphicon-plus"></i> Add Row</a>
+                        </div>
+                        <script>
+                            jQuery(document).delegate('a.add-record', 'click', function (e) {
+                                e.preventDefault();
+                                var content = jQuery('#sample_table tr'),
+                                    size = jQuery('#tbl_posts >tbody >tr').length + 1,
+                                    element = null,
+                                    element = content.clone();
+                                            element.attr('id', 'rec-' + size);
+                                element.find('.delete-record').attr('data-id', size);
+                                            element.appendTo('#tbl_posts_body');
+                                element.find('.sn').html(size);
+                                        });
+
+                            jQuery(document).delegate('a.delete-record', 'click', function (e) {
+
+                                e.preventDefault();
+                                //var didConfirm = confirm("Are you sure You want to delete");
+                                //if (didConfirm == true) {
+                                var id = jQuery(this).attr('data-id');
+                                        var targetDiv = jQuery(this).attr('targetDiv');
+                                        jQuery('#rec-' + id).remove();
+
+                                //regnerate index number on table
+                                $('#tbl_posts_body tr').each(function (index) {
+                                    //alert(index);
+                                    $(this).find('span.sn').html(index + 1);
+                                        });
+                                tinhtongtien();
+                                return true;
+                                //} else {
+                                //    return false;
+                                //}
+                            });
+                        </script>
+                        <div id="thue">
+                        </div>
+                        <div class="row pl-3 pt-4">
+                            <p class="text-danger col-2">Tổng tiền bằng chữ:</p>
+                            <p class="font-italic font-weight-bolder col-9" id="tienbangchu"></p>
+                        </div>
+                        <div id="extrafield">
+                            <script>
+
+
+                                function tinhthue() {
+                                    var tienthue = $('#tienthue').val();
+                                    var tientruocthue = $('#tientruocthue').val();
+                                    var chietkhau = parseFloat($('#chietkhau').val());
+                                    if ($('#tienthue').val() >= 0) {
+                                        document.getElementById("tongtienthue").value = (tienthue * tientruocthue) / 100;
+                                        document.getElementById("tongtienhang").value = (parseFloat(tientruocthue) + parseFloat($('#tongtienthue').val())) - parseFloat(chietkhau);
+                                        document.getElementById("tienbangchu").innerHTML = DocTienBangChu(document.getElementById("tongtienhang").value) + " " + $("#loaitien :selected").text();
+                                    }
+                                    else {
+                                        document.getElementById("tongtienthue").value = 0;
+                                        document.getElementById("tongtienhang").value = (parseFloat(tientruocthue) + 0) - parseFloat(chietkhau);
+                                        document.getElementById("tienbangchu").innerHTML = DocTienBangChu(document.getElementById("tongtienhang").value) + " " + $("#loaitien :selected").text();
+                                    }
+                                };
+                                //đang sử tại đây
+                                function thaythue() {
+                                    var temp = parseFloat(document.getElementById("chietkhau").value);
+                                    var temp2 = parseFloat(document.getElementById("tientruocthue").value);
+                                    var temp3 = parseFloat(document.getElementById("tongtienthue").value);
+                                    if (temp > temp2 - temp3) {
+                                        alert("chiết khấu phải nhỏ hơn tổng tiền sau thuế");
+                                        document.getElementById("chietkhau").value = 0;
+                                    }
+                                    else {
+                                        var tienthue = $('#tienthue').val();
+                                        var tientruocthue = $('#tientruocthue').val();
+                                        var chietkhau = parseFloat($('#chietkhau').val());
+                                        if ($('#tienthue').val() >= 0) {
+                                            document.getElementById("tongtienthue").value = (tienthue * tientruocthue) / 100;
+                                            document.getElementById("tongtienhang").value = (parseFloat(tientruocthue) + parseFloat($('#tongtienthue').val())) - parseFloat(chietkhau);
+                                            document.getElementById("tienbangchu").innerHTML = DocTienBangChu(document.getElementById("tongtienhang").value) + " " + $("#loaitien :selected").text();
+                                        }
+                                        else {
+                                            document.getElementById("tongtienthue").value = 0;
+                                            document.getElementById("tongtienhang").value = (parseFloat(tientruocthue) + 0) - parseFloat(chietkhau);
+                                            document.getElementById("tienbangchu").innerHTML = DocTienBangChu(document.getElementById("tongtienhang").value) + " " + $("#loaitien :selected").text();
+                                        }
+                                    }
+                                };
+                                $(document).ready(function (){
+                                       if (document.getElementById("ipmhd").value.includes("01GTKT")) {
+                                        $('#thue').append('<div class="container gtgt">' +
+                                            '<div class="row">' +
+                                            '<div class="col-6"><div class="row pt-2">' +
+                                            '<p class="text-primary col-6">Tổng tiền hàng trước thuế</p>' +
+                                            '<input id="tientruocthue"  type="text" class="form-control col-6" name="tientruocthue" value="" />' +
+                                            '</div><div class="row pt-2"><p class="text-primary col-6">Thuế</p>' +
+                                            '<select onchange="tinhthue()" id="tienthue" class="col-6 form-control" name="thue">' +
+                                            '<option value="-2">không thuế</option>' +
+                                            '<option value="0">0%</option>' +
+                                            '<option value="5">5%</option>' +
+                                            '<option value="10">10%</option>' +
+                                            '</select>' +
+                                            '</div>' +
+                                            '<div class="row pt-2"><p class="text-primary col-6">Tổng tiền thuế</p>' +
+                                            '<input id="tongtienthue" type="text" class="form-control col-6" name="tongtienthue" value="" /></div>' +
+                                            '<div class="row pt-2"><p class="text-primary col-6">Chiết khấu</p>' +
+                                            '<input id="chietkhau" onkeyup="thaythue()" type="text" class="form-control col-6" name="chietkhau" placeholder="Nhập chiết khấu" value="0" />' +
+                                            '</div><div class="row pt-2"><p class="text-primary col-6">Tổng tiền hàng</p>' +
+                                            '<input readonly onchange="hienthichu()" id="tongtienhang" type="text" class="form-control col-6" name="tongtienhang" value="" />' +
+                                            '</div></div> </div></div>');
+                                           document.getElementById("tientruocthue").value = @Model.InvoiceData.TotalAmountWithoutVAT;
+                                          
+                                    }
+                                    if (document.getElementById("ipmhd").value.includes("02GTTT")) {
+                                        $('#thue').append('<div class="container banhang"><div class="row pt-2"><p class="text-primary col-2">Tổng tiền hàng</p>' +
+                                            '<input readonly id="tongtienhang" type="text" class="form-control col-7" name="tongtienhang" value="" /></div> </div>');
+                                    }
+                                });
+                                $('#ipmhd').on("input", function () {
+                                    const myNode = document.getElementById("thue");
+                                    while (myNode.firstChild) {
+                                        myNode.removeChild(myNode.firstChild);
+                                    }
+                                    if (document.getElementById("ipmhd").value.includes("01GTKT")) {
+                                        $('#thue').append('<div class="container gtgt">' +
+                                            '<div class="row">' +
+                                            '<div class="col-6"><div class="row pt-2">' +
+                                            '<p class="text-primary col-6">Tổng tiền hàng trước thuế</p>' +
+                                            '<input id="tientruocthue" type="text" class="form-control col-6" name="tientruocthue" value="" />' +
+                                            '</div><div class="row pt-2"><p class="text-primary col-6">Thuế</p>' +
+                                            '<select onchange="tinhthue()" id="tienthue" class="col-6 form-control" name="thue">' +
+                                            '<option value="-2">không thuế</option>' +
+                                            '<option value="0">0%</option>' +
+                                            '<option value="5">5%</option>' +
+                                            '<option value="10">10%</option>' +
+                                            '</select>' +
+                                            '</div>' +
+                                            '<div class="row pt-2"><p class="text-primary col-6">Tổng tiền thuế</p>' +
+                                            '<input id="tongtienthue" type="text" class="form-control col-6" name="tongtienthue" value="" /></div>' +
+                                            '<div class="row pt-2"><p class="text-primary col-6">Chiết khấu</p>' +
+                                            '<input id="chietkhau" onkeyup="thaythue()" type="text" class="form-control col-6" name="chietkhau" placeholder="Nhập chiết khấu" value="0" />' +
+                                            '</div><div class="row pt-2"><p class="text-primary col-6">Tổng tiền hàng</p>' +
+                                            '<input readonly onchange="hienthichu()" id="tongtienhang" type="text" class="form-control col-6" name="tongtienhang" value="" />' +
+                                            '</div></div> </div></div>');
+
+                                    }
+                                    if (document.getElementById("ipmhd").value.includes("02GTTT")) {
+                                        $('#thue').append('<div class="container banhang"><div class="row pt-2"><p class="text-primary col-2">Tổng tiền hàng</p>' +
+                                            '<input readonly id="tongtienhang" type="text" class="form-control col-7" name="tongtienhang" value="" /></div> </div>');
+                                    }
+                                    if (!document.getElementById("ipmhd").value.includes("01GTKT") && !document.getElementById("ipmhd").value.includes("02GTTT")) {
+                                        const parent = document.getElementById("thue")
+                                        while (parent.firstChild) {
+                                            parent.firstChild.remove();
+                                        }
+                                    }
+                                });
+
+
+
+                            </script>
+                        </div>
+                    </div>
+
+                    <!--------------------------------------------END STYLE Hiẻu ----------------------------------------------->
+                </fieldset>
+            </div>
+        </div>
+        <div class="row">
+            <p id="testdulieu" class="form-control mt-3 ml-auto mr-auto col-10 text-danger bg-white text-center"></p>
+            <div class="col-5"></div>
+            <div class="col-6"><p onclick="laphoadon()" class="btn btn-primary mt-4 mr-auto ml-auto" type="button">Lập hóa đơn thay thế</p></div>
+            <script>
     function laphoadon() {
         alert(JSON.stringify(GetCellValues()));
                 $.ajax({
@@ -506,10 +560,10 @@
                 });
             }
             document.getElementById("testdulieu").innerHTML = JSON.stringify(iv);
-        </script>
-    </div>
+            </script>
+        </div>
 
-</form>
+    </form>
 <script>
     function lala() {
         $.ajax({

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "F:\\verdacotoolpdf\\InvoiceGateSS3\\InvoiceGate\\InvoiceGate\\InvoiceGate.csproj": {}
+    "C:\\Users\\Admin\\Documents\\GitHub\\lancuoi\\InvoiceGateSS3\\InvoiceGate\\InvoiceGate\\InvoiceGate.csproj": {}
   },
   "projects": {
-    "F:\\verdacotoolpdf\\InvoiceGateSS3\\InvoiceGate\\InvoiceGate\\InvoiceGate.csproj": {
+    "C:\\Users\\Admin\\Documents\\GitHub\\lancuoi\\InvoiceGateSS3\\InvoiceGate\\InvoiceGate\\InvoiceGate.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\verdacotoolpdf\\InvoiceGateSS3\\InvoiceGate\\InvoiceGate\\InvoiceGate.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\Documents\\GitHub\\lancuoi\\InvoiceGateSS3\\InvoiceGate\\InvoiceGate\\InvoiceGate.csproj",
         "projectName": "InvoiceGate",
-        "projectPath": "F:\\verdacotoolpdf\\InvoiceGateSS3\\InvoiceGate\\InvoiceGate\\InvoiceGate.csproj",
-        "packagesPath": "C:\\Users\\asus\\.nuget\\packages\\",
-        "outputPath": "F:\\verdacotoolpdf\\InvoiceGateSS3\\InvoiceGate\\InvoiceGate\\obj\\",
+        "projectPath": "C:\\Users\\Admin\\Documents\\GitHub\\lancuoi\\InvoiceGateSS3\\InvoiceGate\\InvoiceGate\\InvoiceGate.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Admin\\Documents\\GitHub\\lancuoi\\InvoiceGateSS3\\InvoiceGate\\InvoiceGate\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -88,10 +88,16 @@
             }
           },
           "imports": [
-            "net461"
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
