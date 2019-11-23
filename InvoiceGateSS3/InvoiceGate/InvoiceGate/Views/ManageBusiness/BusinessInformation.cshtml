@@ -1,0 +1,130 @@
+﻿@model InvoiceGate.Models.UserInformation
+@{
+    ViewData["Title"] = "BusinessInformation";
+    Layout = "~/Views/Shared/_Managelayout.cshtml";
+}
+    <div class="container-fluid p-0">
+        <div class="row">
+            <div class="col-12">
+                <ul class="breadcrumb  bg-light font-weight-bold" style="margin: unset !important">
+                    <li class="breadcrumb-item">
+                        <a asp-area="" asp-controller="Invoice" asp-action="Index">Trang chủ</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a>Quản lý thông tin doanh nghiệp</a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        <a>Thông tin doanh nghiệp</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <section class="bg-white">
+        <form>
+            <fieldset class="border p-2">
+                <legend class="w-auto">Thông tin doanh nghiệp:</legend>
+                <div class="container-fluid">
+                    <div class="row pb-4">
+                        <div class="col-12">
+                            <div class="row pb-4">
+                                <div class="col-2"><label>Tên đơn vị</label></div>
+                                <div class="col-10"><input class="w-100 txtInfo" asp-for="SellerLegalName" readonly /></div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-2"><label>Địa chỉ</label></div>
+                                <div class="col-10"><input class="w-100 txtInfo" asp-for="SellerAddressLine" readonly /></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row pb-4">
+                        <div class="col-6">
+                            <div class="row">
+                                <div class="col-4"><label>Mã số thuế</label></div>
+                                <div class="col-8"><input class="w-100 txtInfo" asp-for="SellerTaxCode" readonly /></div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="row">
+                                <div class="col-4"><label>Mã fax</label></div>
+                                <div class="col-8"><input class="w-100 txtInfo" value="" readonly /></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row pb-4">
+                        <div class="col-6">
+                            <div class="row">
+                                <div class="col-4"><label>Người đại diện</label></div>
+                                <div class="col-8"><input class="w-100 txtInfo" asp-for="SellerContactPersonName" readonly /></div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="row">
+                                <div class="col-4"><label>Người liên hệ</label></div>
+                                <div class="col-8"><input class="w-100 txtInfo" asp-for="SellerContactPersonName" readonly /></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row pb-4">
+                        <div class="col-6">
+                            <div class="row">
+                                <div class="col-4"><label>Email liên hệ</label></div>
+                                <div class="col-8"><input class="w-100 txtInfo" asp-for="SellerEmail" readonly /></div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="row">
+                                <div class="col-4"><label>Số điện thoại liên hệ</label></div>
+                                <div class="col-8"><input class="w-100 txtInfo" asp-for="SellerPhoneNumber" readonly /></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row pb-4">
+                        <div class="col-6">
+                            <div class="row">
+                                <div class="col-4"><label>Số tài khoản</label></div>
+                                <div class="col-8"><input class="w-100 txtInfo" asp-for="SellerBankAcount" readonly /></div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="row">
+                                <div class="col-4"><label>Tên ngân hàng</label></div>
+                                <div class="col-8"><input class="w-100 txtInfo" asp-for="SellerBankName" readonly /></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row pb-4">
+                        <div class="col-6">
+                            <div class="row">
+                                <div class="col-4"><label>Website</label></div>
+                                <div class="col-8"><input class="w-100 txtInfo" value="" readonly /></div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="row">
+                                <div class="col-4"><label>Mã quốc gia</label></div>
+                                <div class="col-8"><input class="w-100 txtInfo" value="" readonly /></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="row">
+                                <div class="col-4"><label>Địa chỉ bưu điện</label></div>
+                                <div class="col-8"><input class="w-100 txtInfo" value="" readonly /></div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="row">
+                                <div class="col-4"><label>Mã bưu điện</label></div>
+                                <div class="col-8"><input class="w-100 txtInfo" value="" readonly /></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </section>

@@ -1,0 +1,383 @@
+﻿
+@{
+    ViewData["Title"] = "ManageInvoice";
+    Layout = "~/Views/Shared/_Managelayout.cshtml";
+}
+@model ICollection<InvoiceGate.Models.InvoiceInformation>
+<style>
+    table th, table td {
+        font-size: 10pt !important;
+        text-align: center;
+    }
+
+    /*table tr:nth-child(even) {
+        background-color: #BEF2F5
+    }*/
+
+    .pagination li:hover {
+        cursor: pointer;
+    }
+</style>
+<h1>@ViewBag.cac</h1>
+<p id="cc"></p>
+<div class="container-fluid p-0">
+    <div class="row">
+        <div class="col-12">
+            <ul class="breadcrumb  bg-light font-weight-bold" style="margin: unset !important">
+                <li class="breadcrumb-item">
+                    <a asp-area="" asp-controller="Invoice" asp-action="Index">Trang chủ</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a>Hóa đơn của doanh nghiệp</a>
+                </li>
+                <li class="breadcrumb-item active">
+                    <a>Quản lý hóa đơn</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<form method="post">
+    <div class="row">
+        <div class="col-12">
+            <fieldset class="border p-2 gr-box">
+                <legend class="w-auto">Quản lý hóa đơn:</legend>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="row pb-4">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-3"><label>Từ ngày lập</label></div>
+                                        <div class="col-9 input-group date p-0" id="datetimepicker3">
+                                            <input id="ngaylaphd1" name="ngaylaphd1" type="text" class="form-control " value="" required />
+                                            <span class="focus-input2" data-placeholder="NGÀY LẬP HÓA ĐƠN"></span>
+                                            <span class="input-group-addon">
+                                                <i class="fas fa-calendar"></i>
+                                            </span>
+                                        </div>
+                                        <script>
+                                            $('#datetimepicker3').datetimepicker({
+                                                format: 'YYYY-MM-DD',
+                                                sideBySide: true
+
+                                            });
+
+
+                                            /**/</script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="row pb-4">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-3"><label>Đến ngày lập</label></div>
+                                        <div class="col-9 input-group date p-0" id="datetimepicker4">
+                                            <input id="ngaylaphd2" name="ngaylaphd2" type="text" class="form-control " value="" required />
+                                            <span class="focus-input2" data-placeholder="NGÀY LẬP HÓA ĐƠN"></span>
+                                            <span class="input-group-addon">
+                                                <i class="fas fa-calendar"></i>
+                                            </span>
+                                        </div>
+                                        <script>
+                                            $('#datetimepicker4').datetimepicker({
+                                                format: 'YYYY-MM-DD',
+                                                sideBySide: true
+
+                                            });
+
+
+                                                                                                                                                                                                            /**/</script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-5"></div>
+                    <div class="col-6">
+                        <input onclick="layhoadon()" class="btn btn-primary mt-4 mr-auto ml-auto" type="submit" value="Tìm kiếm" />
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</form>
+<fieldset class="border p-2 gr-box">
+    <legend class="w-auto">Danh sách hóa đơn</legend>
+    <div class=" " style="overflow-x:scroll">
+        <table id="table-id" class="table table-hover table-bordered table-class">
+            <thead class="border-0">
+                <tr>
+                    <th class="d-lg-table-cell ">Mẫu hóa đơn</th>
+                    <th class="d-lg-table-cell ">Ký hiệu</th>
+                    <th class="d-lg-table-cell ">Số hóa đơn</th>
+                    <th class="d-lg-table-cell ">Ngày lập</th>
+                    <th class="d-xl-table-cell ">Tên người mua</th>
+                    <th class="d-lg-table-cell ">Mã số thuế</th>
+                    <th class="d-lg-table-cell ">Tổng tiền trước thuế</th>
+                    <th class="d-lg-table-cell ">Tiền thuế</th>
+                    <th class="d-lg-table-cell ">Tổng tiền</th>
+                    <th class="d-lg-table-cell ">Loại tiền tệ</th>
+                    <th class="d-lg-table-cell ">Xem</th>
+                    <th class="d-lg-table-cell ">Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                {
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.templateCode</td>
+                            <td>@item.invoiceSeri</td>
+                            <td>@item.invoiceNo</td>
+                            <td>@item.issueDate</td>
+                            <td>@item.buyerName</td>
+                            <td>@item.supplierTaxCode</td>
+                            <td>@item.totalBeforeTax</td>
+                            <td>@item.taxAmount</td>
+                            <td>@item.total</td>
+                            <td>@item.currency</td>
+                            <td><p class="btn border bg-white"><i onclick="teamchungta('@item.invoiceNo.ToString()','@item.templateCode','@item.supplierTaxCode')" class="fa fa-eye text-white" style="color:#5337b1 !important; cursor:pointer"></i></p></td>
+                            <td><p class="btn border bg-danger"><i onclick="mohoadon('@item.invoiceNo.ToString()','@item.templateCode','@item.supplierTaxCode')" class="fas fa-file-invoice text-white" style="color:white     !important; cursor:pointer"></i></p></td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+        <input id="ippp" type="hidden" class="col-12 flex-wrap" name="name" value="" />
+        <script>
+            var c1;
+            var c2;
+            var c3;
+            function mohoadon(c1, c2, c3) {
+                getzipstring(c1, c2, c3);
+                $.ajax({
+                    url: '@Url.Content("~/")' + "InvoiceBusiness/thaythe",
+                    type: 'POST',
+                    data: {
+                        zip: document.getElementById("ippp").value
+                    },
+                    dataType: 'json',
+                    success: function (data1) {
+                        alert(data1);
+                    }
+
+                    });
+            }
+
+            function getzipstring(c1, c2, c3 ) {
+                    $.ajax({
+                        url: '@Url.Content("~/")' + "InvoiceBusiness/viewinvoice",
+                        type: 'POST',
+                        data: {
+                            query: JSON.stringify(GetCellValues(c3, c1, c2 )),
+                        },
+                        dataType: 'json',
+                        success: function (data1) {
+                            document.getElementById("ippp").value = JSON.parse(data1["value"])["fileToBytes"];
+                        }
+                    });
+
+            }
+        </script>
+        <script>
+            $(document).ready(function () {
+                var const1 = sessionStorage.getItem("template");
+                var const2 = sessionStorage.getItem("ivoiceno");
+                var const3 = sessionStorage.getItem("supply");
+                if (const1 !== "" && const2 !== "" && const3 !== "" && const1 !== null && const2 !== null && const3 !== null) {
+                    $.ajax({
+                        url: '@Url.Content("~/")' + "InvoiceBusiness/viewinvoice",
+                        type: 'POST',
+                        data: {
+                            query: JSON.stringify(GetCellValues(const3, const2, const1)),
+                        },
+                        dataType: 'json',
+                        success: function (data1) {
+                            document.getElementById("ippp").value = JSON.parse(data1["value"])["fileToBytes"];
+                            $('#myModal4').modal('show');
+                            const parent = document.getElementById("hienthi");
+                            while (parent.firstChild) {
+                                parent.firstChild.remove();
+                            }
+                            $("#hienthi").append('<div id="genviewpdf" class="container"><P></P></div>');
+                            chay();
+                            sessionStorage.setItem("template", "");
+                            sessionStorage.setItem("ivoiceno", "");
+                            sessionStorage.setItem("supply", "");
+                        }
+                    });
+                }
+            });
+            var ivno;
+            var templ;
+            var sup;
+            function teamchungta(ivno, templ, sup) {
+                 sessionStorage.setItem("template", templ);
+                 sessionStorage.setItem("ivoiceno", ivno);
+                sessionStorage.setItem("supply", sup);
+                 location.reload(true);
+            }
+             function chay() {
+                    $.ajax({
+                        url: '@Url.Content("~/")' + "InvoiceBusiness/getzip",
+                        type: 'POST',
+                        data: {
+                            zip: document.getElementById("ippp").value
+                        },
+                        dataType: 'json',
+                        success: function (data1) {
+                            var replace = data1.replace("logo.png", "..\\PDF\\logo.png");
+                            $("#genviewpdf").append(replace.replace("watermark.png", "../PDF/watermark.png"));
+                        },
+                        error: function (data2) {
+                            alert("LỖI HỆ THỐNG VUI LÒNG GỌI SỐ ĐIỆN THOẠI ĐỂ THÔNG BÁO");
+                        }
+                    });
+                }
+        </script>
+    </div>
+    <!--		Start Pagination -->
+    <div class="row">
+        <div class="col-5"></div>
+        <div class="col-5 pagination-container">
+            <nav>
+                <ul class="pagination">
+                    <li data-page="prev">
+                        <span> < <span class="sr-only">(current)</span></span>
+                    </li>
+                    <!--	Here the JS Function Will Add the Rows -->
+                    <li data-page="next" id="prev">
+                        <span> > <span class="sr-only">(current)</span></span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-2 form-group mt-auto mb-auto">
+            <select class="form-control" name="state" id="maxRows">
+                <option value="5000">Show ALL Rows</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+                <option value="70">70</option>
+                <option value="100">100</option>
+            </select>
+        </div>
+    </div>
+</fieldset>
+<div class="modal fade" id="myModal4">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body" id="hienthi">
+
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var temp1;
+    var temp2;
+    var temp3;
+    function GetCellValues(temp1, temp2, temp3) {
+        var iv = {
+            "supplierTaxCode": temp1,
+            "invoiceNo": temp2,
+            "templateCode": temp3,
+            "fileType": "zip"
+        }
+        return iv;
+    }
+</script>
+<script>
+    getPagination('#table-id');
+
+
+    function getPagination(table) {
+        var lastPage = 1;
+        $('#maxRows').on('change', function (evt) {
+            lastPage = 1;
+            $('.pagination').find("li").slice(1, -1).remove();
+            var trnum = 0;
+            var maxRows = parseInt($(this).val());
+            if (maxRows == 5000) {
+                $('.pagination').hide();
+            } else {
+                $('.pagination').show();
+            }
+            var totalRows = $(table + ' tbody tr').length;
+            $(table + ' tr:gt(0)').each(function () {
+                trnum++;
+                if (trnum > maxRows) {
+                    $(this).hide();
+                } if (trnum <= maxRows) { $(this).show(); }
+            });
+            if (totalRows > maxRows) {
+                var pagenum = Math.ceil(totalRows / maxRows);
+                for (var i = 1; i <= pagenum;) {
+                    $('.pagination #prev').before('<li data-page="' + i + '">\
+                                                      <span>'+ i++ + '<span class="sr-only">(current)</span></span>\
+                                                    </li>').show();
+                }
+            }
+            $('.pagination [data-page="1"]').addClass('active');
+            $('.pagination li').on('click', function (evt) {
+                evt.stopImmediatePropagation();
+                evt.preventDefault();
+                var pageNum = $(this).attr('data-page');
+                var maxRows = parseInt($('#maxRows').val());
+                if (pageNum == "prev") {
+                    if (lastPage == 1) { return; }
+                    pageNum = --lastPage;
+                }
+                if (pageNum == "next") {
+                    if (lastPage == ($('.pagination li').length - 2)) { return; }
+                    pageNum = ++lastPage;
+                }
+
+                lastPage = pageNum;
+                var trIndex = 0;
+                $('.pagination li').removeClass('active');
+                $('.pagination [data-page="' + lastPage + '"]').addClass('active');
+                $(table + ' tr:gt(0)').each(function () {
+                    trIndex++;
+                    if (trIndex > (maxRows * pageNum) || trIndex <= ((maxRows * pageNum) - maxRows)) {
+                        $(this).hide();
+                    } else { $(this).show(); }
+                });
+            });
+        }).val(5).change();
+    }
+    $(function () {
+        $('table tr:eq(0)').prepend('<th> STT </th>')
+        var id = 0;
+        $('table tr:gt(0)').each(function () {
+            id++
+            $(this).prepend('<td>' + id + '</td>');
+        });
+    })
+</script>
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker2').datetimepicker({
+            format: 'YYYY/MM/DD hh:mm', sideBySide: true
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker3').datetimepicker({
+            format: 'YYYY/MM/DD hh:mm', sideBySide: true
+        });
+    });
+</script>
+<script src="~/js/invoiceif.js"></script>

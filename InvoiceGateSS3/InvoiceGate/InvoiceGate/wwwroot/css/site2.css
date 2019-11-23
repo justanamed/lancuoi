@@ -1,0 +1,119 @@
+﻿/*.r-top{
+    right:10%;
+    position:absolute;
+}
+.menu{
+    width:100%!important
+}*/
+html {
+    position: relative;
+    min-height: 100%;
+    background-color: white
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 100px
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    /* Set the fixed height of the footer here */
+    height: 19pt;
+    line-height: 20px; /* Vertically center the text there */
+    padding-left: 20px;
+    background-color: white;
+}
+.fa{
+    color: black !important
+}
+.menu .nav-link:hover {
+    color: white !important;
+    background: linear-gradient(90deg, rgba(23,42,87,1) 0%, rgba(116,116,156,1) 93%);
+}
+.menu .nav-link:hover .fa {
+        color: white !important;
+}
+.menu-dr-d li .nav-link{
+    line-height:22px
+}
+    .menu-dr-d li .nav-link:hover {
+        background: rgb(240,240,240);
+        background: linear-gradient(90deg, rgba(240,240,240,1) 0%, rgba(249,249,249,1) 95%, rgba(76,103,167,1) 98%);
+        color: black !important;
+    }
+#icon {
+    height: 15px !important;
+    width: 15px !important
+}
+.menuu{
+    font-size:15px!important
+}
+.carousel-control-next {
+    right: 0;
+    width: 110px !important;
+}
+
+.carousel-control-prev {
+    left: 0;
+    width: 110px !important;
+}
+.carousel-item {
+    padding-bottom: 10px;
+    -webkit-box-shadow: -1px 6px 9px 1px rgba(89,89,89,1);
+    -moz-box-shadow: -1px 6px 9px 1px rgba(89,89,89,1);
+    box-shadow: -1px 6px 9px 1px rgba(89,89,89,1);
+}
+
+.imgbanner {
+    height: 250px
+}
+
+.border-radius-100 {
+    border-radius: 100%;
+    height: 10px !important;
+    width: 10px !important;
+    background-color: black;
+}
+.imgbanner {
+    width: 82%;
+}
+.direction {
+    color: black;
+    font-size: 25pt !important;
+}
+.txtInfo{
+    border :none;
+    color: royalblue;
+    outline : none;
+}
+.gr-box{
+    background-color:white
+}
+
+.content-nav {
+    background: rgb(21,39,83);
+    background: linear-gradient(90deg, rgba(21,39,83,1) 0%, rgba(116,116,156,1) 93%);
+}
+.nav-child{
+
+}
+.collapse-side-btn {
+    border: white;
+    height: 40px;
+    border-bottom-right-radius: 14px;
+    width: 40px;
+    outline: none !important;
+    background-color: #162854 !important;
+    margin-left: -15px !important;
+}
+.collapse-side-btn:hover{
+    background-color: #283c72 !important;
+}
+.collapse-side-btn .fa {
+    color:white !important;
+
+}

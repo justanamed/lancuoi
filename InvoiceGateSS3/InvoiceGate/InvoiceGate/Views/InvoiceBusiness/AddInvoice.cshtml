@@ -1,0 +1,663 @@
+﻿@{
+    ViewData["Title"] = "AddInvoice";
+    Layout = "~/Views/Shared/_Managelayout.cshtml";
+}
+@model InvoiceGate.Models.UserInformation
+<div class="container-fluid p-0">
+    <div class="row">
+        <div class="col-12">
+            <ul class="breadcrumb  bg-light font-weight-bold" style="margin: unset !important">
+                <li class="breadcrumb-item">
+                    <a asp-area="" asp-controller="Invoice" asp-action="Index">Trang chủ</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a>Hóa đơn của doanh nghiệp</a>
+                </li>
+                <li class="breadcrumb-item active">
+                    <a>Lập hóa đơn</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<form>
+    <div class="row">
+        <div class="col-6">
+            <fieldset class="border p-2 gr-box">
+                <legend class="w-auto">Thông tin khách hàng:</legend>
+                <div class="container-fluid">
+                    <div class="row pb-4">
+                        <div class="col-12">
+                            <div class="row pb-4">
+                                <div class="col-3"><label>Số điện thoại</label></div>
+                                <div class="col-9"><input id="sodt_nguoimua" name="sodt_nguoimua" class="w-100 form-control" /></div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-3"><label>Tên người mua</label></div>
+                                <div class="col-9"><input id="tennm" name="tennm" class="w-100 form-control" /></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-3"><label>Mã khách hàng</label></div>
+                                <div class="col-9"><input id="makh" name="makh" class="w-100 form-control" /></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row pb-4">
+                                <div class="col-3"><label>Địa chỉ</label></div>
+                                <div class="col-9"><input id="diachi_nguoimua" name="diachi_nguoimua" class="w-100 form-control" /></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-12">
+                            <div class="row pb-4">
+                                <div class="col-3"><label>Email</label></div>
+                                <div class="col-9"><input id="email_nguoimua" name="email_nguoimua" class="w-100 form-control" /></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row pb-4">
+                                <div class="col-3"><label>Mã số thuế</label></div>
+                                <div class="col-9"><input id="mst_nguoimua" name="mst_nguoimua" class="w-100 form-control" /></div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="row pb-4">
+                                <div class="col-3"><label>Số fax</label></div>
+                                <div class="col-9"><input id="sofax" name="sofax" class="w-100 form-control" /></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row pb-4">
+                                <div class="col-3"><label>Tên đơn vị</label></div>
+                                <div class="col-9"><input id="tdv_nguoimua" name="tvd_nguoimua" class="w-100 form-control" /></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row pb-4">
+                                <div class="col-3"><label>Số tài khoản ngân hàng</label></div>
+                                <div class="col-9"><input id="sonh_nguoimua" name="sonh_nguoimua" class="w-100 form-control" /></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row pb-4">
+                                <div class="col-3"><label>Tên ngân hàng</label></div>
+                                <div class="col-9"><input id="tnh_nguoimua" name="tnh_nguoimua" class="w-100 form-control" /></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row pb-4">
+                                <div class="col-3"><label>Loại giấy tờ</label></div>
+                                <div class="col-9">
+                                    <select id="loaigiayto" name="loaigiayto" class="w-100 form-control">
+                                        <option value="1">CMND</option>
+                                        <option value="2">Hộ chiếu</option>
+                                        <option value="3">Giấy phép kinh doanh</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row pb-4">
+                                <div class="col-3"><label>Số giấy tờ</label></div>
+                                <div class="col-9"><input id="sogiayto" name="sogiayto" class="w-100 form-control" /></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <div class="col-6">
+            <fieldset class="border p-2 gr-box">
+                <legend class="w-auto">Thông tin người bán:</legend>
+                <div class="container-fluid">
+                    <div class="row pb-4">
+                        <div class="col-12">
+                            <div class="row pb-4">
+                                <div class="col-3"><label>Mã số thuế</label></div>
+                                <div class="col-9"><input id="mst_benban" name="mst_benban" readonly asp-for="SellerTaxCode"  class="w-100 form-control" /></div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-3"><label>Tên đơn vị</label></div>
+                                <div class="col-9"><input id="tdv_benban" name="tdv_benban" readonly asp-for="SellerLegalName" class="w-100 form-control" /></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row pb-4">
+                        <div class="col-12">
+                            <div class="row pb-4">
+                                <div class="col-3"><label>Địa chỉ</label></div>
+                                <div class="col-9"><input id="diachi_benban" name="diachi_benban" readonly asp-for="SellerAddressLine" class="w-100 form-control" /></div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-3"><label>Số điện thoại</label></div>
+                                <div class="col-9"><input id="sdt_benban" name="sdt_benban" readonly asp-for="SellerPhoneNumber" class="w-100 form-control" /></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row pb-4">
+                        <div class="col-12">
+                            <div class="row pb-4">
+                                <div class="col-3"><label>Địa chỉ Email</label></div>
+                                <div class="col-9"><input id="email_benban" name="email_benban" readonly asp-for="SellerEmail" class="w-100 form-control" /></div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-3"><label>Số tài khoản</label></div>
+                                <div class="col-9"><input id="stk_benban" name="stk_benban" readonly asp-for="SellerBankAcount" class="w-100 form-control" /></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row pb-4">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-3"><label>Tên ngân hàng</label></div>
+                                <div class="col-9"><input id="tennganhang" name="tennganhang" readonly asp-for="SellerBankName" class="w-100 form-control" /></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <fieldset class="border p-2 gr-box">
+                <legend class="w-auto">Thông tin giao dịch:</legend>
+                <div class="container-fluid">
+                    <div class="row pb-4">
+                        <div class="col-12">
+                            <div class="row pb-4">
+                                <div class="col-3"><label>Hình thức thanh toán</label></div>
+                                <div class="col-9">
+                                    <select id="hinhthuctt" name="hinhthuctt" class="form-control w-100">
+                                        <option value="CK">Chuyển khoản</option>
+                                        <option value="DTCN">DTCN</option>
+                                        <option value="KHAC">Khác</option>
+                                        <option value="TM">Chuyển tiền mặt</option>
+                                        <option value="TM/CK">Chuyển khoản</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-3"><label>Loại tiền</label></div>
+                                <div class="col-9">
+                                    <select id="loaitien" name="loaitien" onchange="tinhtongtien()" class="form-control w-100">
+                                        <option value="USD">USD</option>
+                                        <option value="VND">Việt Nam đồng</option>
+                                        <option value="EUR">Euro</option>
+                                        <option value="JPY">Yên Nhật</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <div class="col-6">
+            <fieldset class="border p-2 gr-box">
+                <legend class="w-auto">Thông tin hóa đơn:</legend>
+                <div class="container-fluid">
+                    <div class="row pb-4">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-3"><label>Mẫu hóa đơn</label></div>
+                                <div class="col-9">
+                                    <input type="text" id="ipmhd" name="ipmhd" class="w-100 form-control" value="" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row pb-4">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-3"><label>Kí hiệu</label></div>
+                                <div class="col-9"><input id="kihieu" name="kihieu" class="w-100 form-control" /></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <style>
+                th, td {
+                    font-size: 10pt !important;
+                    text-align: center !important;
+                }
+
+                table {
+                    table-layout: fixed !important;
+                }
+
+                    table td, table td input {
+                        word-wrap: break-word !important;
+                    }
+            </style>
+            <fieldset class="border p-2 gr-box">
+                <legend class="w-auto">Chi tiết hóa đơn</legend>
+                <div class="container-fluid">
+                    <table id="tbl_posts" class=" table table-hover table-bordered w-100 table-item">
+                        <thead class="border-0">
+                            <tr>
+                                <th class="d-lg-table-cell ">STT</th>
+                                <th class="d-lg-table-cell ">Điều chỉnh</th>
+                                <th class="d-lg-table-cell ">Mã sản phẩm</th>
+                                <th class="d-lg-table-cell ">Tên sản phẩm</th>
+                                <th class="d-lg-table-cell ">Đơn vị tính</th>
+                                <th class="d-lg-table-cell ">Số lô</th>
+                                <th class="d-lg-table-cell ">Hạn dùng</th>
+                                <th class="d-lg-table-cell ">Số lượng</th>
+                                <th class="d-lg-table-cell ">Đơn giá</th>
+                                <th class="d-lg-table-cell ">Thành tiền</th>
+                                <th class="d-lg-table-cell ">Ghi chú</th>
+                                <th class="d-lg-table-cell "> Xóa</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbl_posts_body"></tbody>
+                    </table>
+                    <div style="display:none;">
+                        <table id="sample_table">
+                            <tr id="" class="package-row">
+                                <td><span class="sn"></span>.</td>
+                                <td>Hàng hóa</td>
+                                <td contenteditable="true"></td>
+                                <td contenteditable="true"></td>
+                                <td contenteditable="true"></td>
+                                <td contenteditable="true"></td>
+                                <td contenteditable="true"></td>
+                                <td contenteditable="true" name="numberUsed" id="numberUsed" onkeyup="getValues()"></td>
+                                <td contenteditable="true" id="price" onkeyup="getValues()"></td>
+                                <td onchange="tinhtongtien()" class="thanhtien" name="revenue" id="revenue"></td>
+                                <td contenteditable="true" name="value" id="value"></td>
+                                <td><a class="btn btn-xs delete-record" data-id="0"><i class="fa fa-trash"></i></a></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="well clearfix">
+                        <a class="btn btn-primary pull-right add-record" data-added="0"><i class="glyphicon glyphicon-plus"></i> Add Row</a>
+                    </div>
+                    <script>
+                        jQuery(document).delegate('a.add-record', 'click', function (e) {
+                            e.preventDefault();
+                            var content = jQuery('#sample_table tr'),
+                                size = jQuery('#tbl_posts >tbody >tr').length + 1,
+                                element = null,
+                                element = content.clone();
+                            element.attr('id', 'rec-' + size);
+                            element.find('.delete-record').attr('data-id', size);
+                            element.appendTo('#tbl_posts_body');
+                            element.find('.sn').html(size);
+                        });
+
+                        jQuery(document).delegate('a.delete-record', 'click', function (e) {
+
+                            e.preventDefault();
+                            //var didConfirm = confirm("Are you sure You want to delete");
+                            //if (didConfirm == true) {
+                            var id = jQuery(this).attr('data-id');
+                            var targetDiv = jQuery(this).attr('targetDiv');
+                            jQuery('#rec-' + id).remove();
+
+                            //regnerate index number on table
+                            $('#tbl_posts_body tr').each(function (index) {
+                                //alert(index);
+                                $(this).find('span.sn').html(index + 1);
+                            });
+                            tinhtongtien();
+                            return true;
+                            //} else {
+                            //    return false;
+                            //}
+                        });
+                    </script>
+                    <div id="thue">
+                    </div>
+                    <div class="row pl-3 pt-4">
+                        <p class="text-danger col-2">Tổng tiền bằng chữ:</p>
+                        <p class="font-italic font-weight-bolder col-9" id="tienbangchu"></p>
+                    </div>
+                    <div id="extrafield">
+                        <script>
+
+                            function tinhthue() {
+                                var tienthue = $('#tienthue').val();
+                                var tientruocthue = $('#tientruocthue').val();
+                                var chietkhau = parseFloat($('#chietkhau').val());
+                                if ($('#tienthue').val() >= 0) {
+                                    document.getElementById("tongtienthue").value = (tienthue * tientruocthue) / 100;
+                                    document.getElementById("tongtienhang").value = (parseFloat(tientruocthue) + parseFloat($('#tongtienthue').val())) - parseFloat(chietkhau);
+                                    document.getElementById("tienbangchu").innerHTML = DocTienBangChu(document.getElementById("tongtienhang").value) + " " + $("#loaitien :selected").text();
+                                }
+                                else {
+                                    document.getElementById("tongtienthue").value = 0;
+                                    document.getElementById("tongtienhang").value = (parseFloat(tientruocthue) + 0) - parseFloat(chietkhau);
+                                    document.getElementById("tienbangchu").innerHTML = DocTienBangChu(document.getElementById("tongtienhang").value) + " " + $("#loaitien :selected").text();
+                                }
+                            };
+                            //đang sử tại đây
+                            function thaythue() {
+                                var temp = parseFloat(document.getElementById("chietkhau").value);
+                                var temp2 = parseFloat(document.getElementById("tientruocthue").value);
+                                var temp3 = parseFloat(document.getElementById("tongtienthue").value);
+                                if (temp > temp2 - temp3) {
+                                    alert("chiết khấu phải nhỏ hơn tổng tiền sau thuế");
+                                    document.getElementById("chietkhau").value = 0;
+                                }
+                                else {
+                                    var tienthue = $('#tienthue').val();
+                                    var tientruocthue = $('#tientruocthue').val();
+                                    var chietkhau = parseFloat($('#chietkhau').val());
+                                    if ($('#tienthue').val() >= 0) {
+                                        document.getElementById("tongtienthue").value = (tienthue * tientruocthue) / 100;
+                                        document.getElementById("tongtienhang").value = (parseFloat(tientruocthue) + parseFloat($('#tongtienthue').val())) - parseFloat(chietkhau);
+                                        document.getElementById("tienbangchu").innerHTML = DocTienBangChu(document.getElementById("tongtienhang").value) + " " + $("#loaitien :selected").text();
+                                    }
+                                    else {
+                                        document.getElementById("tongtienthue").value = 0;
+                                        document.getElementById("tongtienhang").value = (parseFloat(tientruocthue) + 0) - parseFloat(chietkhau);
+                                        document.getElementById("tienbangchu").innerHTML = DocTienBangChu(document.getElementById("tongtienhang").value) + " " + $("#loaitien :selected").text();
+                                    }
+                                }
+                            };
+                            $('#ipmhd').on("input", function () {
+                                const myNode = document.getElementById("thue");
+                                while (myNode.firstChild) {
+                                    myNode.removeChild(myNode.firstChild);
+                                }
+                                if (document.getElementById("ipmhd").value.includes("01GTKT")) {
+                                    $('#thue').append('<div class="container gtgt">' +
+                                        '<div class="row">' +
+                                        '<div class="col-6"><div class="row pt-2">' +
+                                        '<p class="text-primary col-6">Tổng tiền hàng trước thuế</p>' +
+                                        '<input id="tientruocthue" type="text" class="form-control col-6" name="tientruocthue" value="" />' +
+                                        '</div><div class="row pt-2"><p class="text-primary col-6">Thuế</p>' +
+                                        '<select onchange="tinhthue()" id="tienthue" class="col-6 form-control" name="thue">' +
+                                        '<option value="-2">không thuế</option>' +
+                                        '<option value="0">0%</option>' +
+                                        '<option value="5">5%</option>' +
+                                        '<option value="10">10%</option>' +
+                                        '</select>' +
+                                        '</div>' +
+                                        '<div class="row pt-2"><p class="text-primary col-6">Tổng tiền thuế</p>' +
+                                        '<input id="tongtienthue" type="text" class="form-control col-6" name="tongtienthue" value="" /></div>' +
+                                        '<div class="row pt-2"><p class="text-primary col-6">Chiết khấu</p>' +
+                                        '<input id="chietkhau" onkeyup="thaythue()" type="text" class="form-control col-6" name="chietkhau" placeholder="Nhập chiết khấu" value="0" />' +
+                                        '</div><div class="row pt-2"><p class="text-primary col-6">Tổng tiền hàng</p>' +
+                                        '<input readonly onchange="hienthichu()" id="tongtienhang" type="text" class="form-control col-6" name="tongtienhang" value="" />' +
+                                        '</div></div> </div></div>');
+
+                                }
+                                if (document.getElementById("ipmhd").value.includes("02GTTT")) {
+                                    $('#thue').append('<div class="container banhang"><div class="row pt-2"><p class="text-primary col-2">Tổng tiền hàng</p>' +
+                                        '<input readonly id="tongtienhang" type="text" class="form-control col-7" name="tongtienhang" value="" /></div> </div>');
+                                }
+                                if (!document.getElementById("ipmhd").value.includes("01GTKT") && !document.getElementById("ipmhd").value.includes("02GTTT")) {
+                                    const parent = document.getElementById("thue")
+                                    while (parent.firstChild) {
+                                        parent.firstChild.remove();
+                                    }
+                                }
+                            });
+
+
+
+                        </script>
+                    </div>
+                </div>
+
+                <!--------------------------------------------END STYLE Hiẻu ----------------------------------------------->
+            </fieldset>
+        </div>
+    </div>
+    <div class="row">
+        <p id="testdulieu" class="form-control mt-3 ml-auto mr-auto col-10 text-danger bg-white text-center"></p>
+        <div class="col-5"></div>
+        <div class="col-1"><input id="hihi" class="btn btn-primary mt-4 mr-auto ml-auto" type="button" value="Lưu nháp" \></div>
+        <div class="col-6"><p onclick="laphoadon()" class="btn btn-primary mt-4 mr-auto ml-auto" type="button">Lập hóa đơn</p></div>
+        <script>
+    function laphoadon() {
+        alert(JSON.stringify(GetCellValues()));
+                $.ajax({
+                    url: '@Url.Content("~/")' + "InvoiceBusiness/laphoadon",
+                    type: 'POST',
+                    data: {
+                        query: JSON.stringify(GetCellValues()),
+                        mst: document.getElementById("mst_benban").value
+                        },
+                    dataType: 'json',
+                    success: function (data1) {
+                        if (JSON.parse(data1)["description"] == null) {
+                            document.getElementById("testdulieu").innerHTML = "Bạn đã lập hóa đơn thành công với Mã số thuế:" + JSON.parse(data1)["supplierTaxCode"] + ", Số hóa đơn: " + JSON.parse(data1)["AB/19E0000174"] + ", Mã số bí mật: " + JSON.parse(data1)["2ZEZ68TFZF"];
+                        }
+                        else {
+                            document.getElementById("testdulieu").innerHTML = "Lập hóa đơn không thành công: " + JSON.parse(data1)["description"];
+                        }
+
+                    },
+                    error: function(){
+                        document.getElementById("testdulieu").innerHTML = "Kiểm tra tất cả các trường thông tin";
+                      }
+                });
+            }
+            document.getElementById("testdulieu").innerHTML = JSON.stringify(iv);
+        </script>
+    </div>
+
+</form>
+<script>
+    function lala() {
+        $.ajax({
+            url: '@Url.Content("~/")' + "InvoiceBusiness/gettype",
+            type: 'POST',
+            dataType: 'json',
+            success: function (data1) {
+                alert(JSON.stringify(data1));
+            }
+        });
+    }
+    $('#datetimepicker1').datetimepicker({
+        defaultDate: new Date(),
+        format: 'DD/MM/YYYY HH:mm:ss',
+        sideBySide: true
+
+    });
+</script>
+<script>
+                        function GetCellValues() {
+                            var iv = {
+                                "generalInvoiceInfo": {},
+                                "buyerInfo": {},
+                                "sellerInfo": {},
+                                "extAttribute": [],
+                                "payments": [],
+                                "deliveryInfo": {},
+                                "itemInfo": [],
+                                "discountItemInfo": [],
+                                "summarizeInfo": {},
+                                "taxBreakdowns": [],
+                                "metadata": [],
+                                "customFields": [],
+                                "meterReading": []
+                            }
+                            iv.generalInvoiceInfo = {
+                                "invoiceType": document.getElementById("ipmhd").value.substring(0, 6),
+                                "templateCode": document.getElementById("ipmhd").value,
+                                "invoiceSeries": document.getElementById("kihieu").value,
+                                "currencyCode": document.getElementById("loaitien").value,
+                                "invoiceNote": "",
+                                "adjustmentType": "1",
+                                "paymentStatus": true,
+                                "paymentType": document.getElementById("hinhthuctt").value,
+                                "paymentTypeName": document.getElementById("hinhthuctt").value,
+                                "cusGetInvoiceRight": true,
+                                "userName": "@ViewBag.usename"
+                            };
+                            iv.buyerInfo = {
+                                "buyerName": document.getElementById("tennm").value,
+                                "buyerLegalName": document.getElementById("tdv_nguoimua").value,
+                                "buyerTaxCode": document.getElementById("mst_nguoimua").value,
+                                "buyerAddressLine": document.getElementById("diachi_nguoimua").value,
+                                "buyerPostalCode": 84,
+                                "buyerDistrictName": "",
+                                "buyerCityName": "",
+                                "buyerCountryCode": "84",
+                                "buyerPhoneNumber": document.getElementById("sodt_nguoimua").value,
+                                "buyerFaxNumber": document.getElementById("sofax").value,
+                                "buyerEmail": document.getElementById("email_nguoimua").value,
+                                "buyerBankName": document.getElementById("tnh_nguoimua").value,
+                                "buyerBankAccount": document.getElementById("sonh_nguoimua").value,
+                                "buyerIdNo": document.getElementById("sogiayto").value,
+                                "buyerIdType": document.getElementById("loaigiayto").value,
+                                "buyerCode": document.getElementById("makh").value,
+                                "buyerBirthDay": ""
+                            };
+
+                            iv.sellerInfo = {
+                                "sellerCode": "",
+                                "sellerLegalName":  document.getElementById("tdv_benban").value,
+                                "sellerTaxCode": document.getElementById("mst_benban").value,
+                                "sellerAddressLine": document.getElementById("diachi_benban").value,
+                                "sellerPhoneNumber": document.getElementById("sdt_benban").value,
+                                "sellerEmail": document.getElementById("email_benban").value,
+                                "sellerBankName": document.getElementById("tennganhang").value,
+                                "sellerBankAccount": document.getElementById("stk_benban").value
+                            };
+                            iv.payments.push({
+                                "paymentMethodName": document.getElementById("hinhthuctt").value
+                            });
+
+                            var table = document.getElementById('tbl_posts');
+                            for (var r = 1, n = table.rows.length; r < n; r++) {
+                                var item =
+                                {
+                                    "lineNumber": 1,
+                                    "itemCode": table.rows[r].cells[2].innerHTML,
+                                    "itemName": table.rows[r].cells[3].innerHTML,
+                                    "unitName": table.rows[r].cells[4].innerHTML,
+                                    "unitPrice": Number(table.rows[r].cells[8].innerHTML),
+                                    "quantity": Number(table.rows[r].cells[7].innerHTML),
+                                    "itemTotalAmountWithoutTax": Number(table.rows[r].cells[9].innerHTML),
+                                    "itemTotalAmountWithTax":Number(table.rows[r].cells[9].innerHTML),
+                                    "itemTotalAmountAfterDiscount": Number(table.rows[r].cells[9].innerHTML),
+                                    "taxPercentage": 0,
+                                    "taxAmount": 0,
+                                    "discount": 0,
+                                    "itemDiscount": 0,
+                                    "itemNote": table.rows[r].cells[10].innerHTML,
+                                    "batchNo": table.rows[r].cells[5].innerHTML,
+                                    "expDate": table.rows[r].cells[6].innerHTML
+                                };
+                                iv.itemInfo.push(item);
+
+                            }
+                            if ($(".gtgt").parents("#thue").length == 1) {
+                                iv.summarizeInfo = {
+                                    "sumOfTotalLineAmountWithoutTax": Number(document.getElementById("tientruocthue").value),
+                                    "totalAmountWithoutTax": Number(document.getElementById("tientruocthue").value),
+                                    "totalTaxAmount": Number(document.getElementById("tongtienthue").value),
+                                    "totalAmountWithTax":  parseFloat(document.getElementById("tientruocthue").value) +  parseFloat(document.getElementById("tongtienthue").value) - Number(document.getElementById("chietkhau").value) ,
+                                    "totalAmountAfterDiscount":0 ,
+                                    "totalAmountWithTaxInWords": document.getElementById("tienbangchu").innerHTML,
+                                    "discountAmount":  Number(document.getElementById("chietkhau").value)
+                                }
+                                iv.taxBreakdowns.push({
+                                    "taxPercentage": Number(document.getElementById("tienthue").value),
+                                    "taxableAmount": Number(document.getElementById("tientruocthue").value),
+                                    "taxAmount":Number(document.getElementById("tongtienthue").value)
+                                });
+                            }
+                            return iv;
+                        }
+                        function getValues() {
+                            var rows = document.querySelectorAll("tr.package-row");
+                            rows.forEach(function (currentRow) {
+                                var numberUsed = Number(currentRow.querySelector('#numberUsed').innerHTML);
+                                var price = Number(currentRow.querySelector('#price').innerHTML);
+
+                                document.querySelectorAll('numberUsed');
+
+                                if (numberUsed == null || price == null ) {
+                                    if (isNaN(inPackage) || isNaN(price)) {
+                                        revenue = 0;
+                                    }
+                                    revenue = 0;
+                                }
+                                else {
+                                    if (isNaN(numberUsed) || isNaN(price)) {
+                                        return;
+                                    }
+                                    revenue = price * numberUsed;
+                                }
+                                currentRow.querySelector("#revenue").innerHTML = revenue;
+                                tinhtongtien();
+                            });
+                            }
+                        function tinhtongtien() {
+                            document.getElementById("tienbangchu").innerHTML = "";
+                            var tong;
+                            tong = 0;
+                            if ($(".gtgt").parents("#thue").length == 1) {
+                                $(".thanhtien").each(function () {
+                                    tong = tong + Number($(this).text());
+                                    document.getElementById("tientruocthue").value = tong;
+                                });
+                                var tienthue = $('#tienthue').val();
+                                var tientruocthue = $('#tientruocthue').val();
+                                var chietkhau = parseFloat($('#chietkhau').val());
+                                if ($('#tienthue').val() >= 0) {
+                                    document.getElementById("tongtienthue").value = (tienthue * tientruocthue) / 100;
+                                    document.getElementById("tongtienhang").value = (parseFloat(tientruocthue) + parseFloat($('#tongtienthue').val())) - parseFloat(chietkhau);
+                                    document.getElementById("tienbangchu").innerHTML = DocTienBangChu(document.getElementById("tongtienhang").value) + " " + $("#loaitien :selected").text();
+                                }
+                                else {
+                                    document.getElementById("tongtienthue").value = 0;
+                                    document.getElementById("tongtienhang").value = (parseFloat(tientruocthue) + 0) - parseFloat(chietkhau);
+                                    document.getElementById("tienbangchu").innerHTML = DocTienBangChu(document.getElementById("tongtienhang").value) + " " + $("#loaitien :selected").text();
+                                }
+                            }
+                            else if ($(".banhang").parents("#thue").length == 1) {
+                                $(".thanhtien").each(function () {
+                                    tong = tong + Number($(this).text());
+                                    document.getElementById("tongtienhang").value = tong;
+                                    document.getElementById("tienbangchu").innerHTML = DocTienBangChu(document.getElementById("tongtienhang").value) + " " + $("#loaitien :selected").text();
+                                });
+                            }
+                        }
+</script>
+<script src="~/js/invoicecr.js"></script>
+<script src="~/js/doctien.js"></script>

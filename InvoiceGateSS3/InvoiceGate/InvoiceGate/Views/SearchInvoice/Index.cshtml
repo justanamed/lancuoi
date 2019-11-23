@@ -1,0 +1,198 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Managelayout.cshtml";
+}
+
+
+<div class="container">
+    <hr />
+    <h3 class="text-primary">Thông tin tìm kiếm</h3>
+    <hr />
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 ml-auto mr-auto">
+                <div class="col-12">
+                    <div class="row border-radius-30 search-box border-blue">
+                        <label class="col-4">MST bên bán <span>*</span></label>
+                        <input id="t3" class="col-8 border-radius-30 border-none" type="text" required />
+                    </div>
+                    <div class="row mt-4 border-radius-30 search-box border-blue">
+                        <label class="col-4">Số hóa đơn <span>*</span></label>
+                        <input id="t4" class="col-8 border-radius-30 border-none" type="text" required />
+                    </div>
+                    <div class="row mt-4 border-radius-30 search-box border-blue">
+                        <label class="col-4">Ngày lập<span>*</span></label>
+                        <div class="col-8 input-group date p-0" id="datetimepicker1">
+                            <input id="t5" type="text" class="form-control " value="" />
+                            <span class="focus-input2" data-placeholder="NGÀY LẬP HÓA ĐƠN"></span>
+                            <span class="input-group-addon">
+                                <i class="fas fa-calendar"></i>
+                            </span>
+                        </div>
+                        <script>
+                            $('#datetimepicker1').datetimepicker({
+                                format: 'YYYY/MM/DD HH:mm:ss',
+                                sideBySide: true
+
+                            });
+
+
+                                                                                /**/</script>
+                    </div>
+
+                    <div class="row mt-4 border-radius-30 search-box border-blue">
+                        <label class="col-4">Mã số bí mật <span>*</span></label>
+                        <input id="t6" class="col-8 border-radius-30 border-none" type="text" required />
+                    </div>
+                    <div class="row mt-4 border-radius-30 search-box border-blue">
+                        <label class="col-4">Mã bảo mật <span>*</span></label>
+                        <input id="captchacheck" class="col-8 border-radius-30 border-none" type="text" placeholder="Nhập mã capcha bên dưới" required />
+                    </div>
+                    <div class="row mt-4 border-radius-30 search-box bg-white  border-blue">
+                        <a href="#" class="col-4" id="btnresetcapcha" onclick="DrawCaptcha()">
+                            <i class="fa fa-refresh fa-spin text-primary " style="font-size:24px;line-height: 45px; margin-left:45%"></i>
+                        </a>
+                        <input id="captcha" class="col-8 border-radius-30  text-white bg-primary border-none" readonly required />
+                        <P id="warning" class="form-control bg-danger text-white" style="display:none">Nhập đúng mã captha</P>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <input id="ippp" type="hidden" class="col-12 flex-wrap" name="name" value="" />
+    <div class="row mt-5 ">
+        <button onclick="teamchungta()" class="btn font-weight-bolder text-white col-4 ml-auto mr-auto btn-primary">Tìm kiếm</button>
+        <script>
+
+                $("#myModal3").on("hidden.bs.modal", function () {
+                    alert("TAMODEL");
+                });
+                $(document).ready(function () {
+                    document.getElementById("t3").value = sessionStorage.getItem("z1");
+                    document.getElementById("t4").value = sessionStorage.getItem("z2");
+                    document.getElementById("t5").value =sessionStorage.getItem("z3");
+                    document.getElementById("t6").value = sessionStorage.getItem("z4");
+                     $('#warning').css("display", "none");
+                        var v3 = sessionStorage.getItem("z1");
+                        var v4 = sessionStorage.getItem("z2");
+                        var v5 = sessionStorage.getItem("z3");
+                        var v6 = sessionStorage.getItem("z4");
+                        $.ajax({
+                            url: '@Url.Content("~/")' + "SearchInvoice/Getitem",
+                            type: 'POST',
+                            data: {
+                                mast: v3,
+                                shd: v4,
+                                ngay: v5,
+                                mabm: v6
+                            },
+                            dataType: 'json',
+                            success: function (data1) {
+                            document.getElementById("ippp").value = JSON.parse(data1["value"])["fileToBytes"];
+                            $('#myModal3').modal('show');
+                            const parent = document.getElementById("acc");
+                            while (parent.firstChild) {
+                                parent.firstChild.remove();
+                            }
+                            $("#acc").append('<div id="genviewpdf" class="container"><P></P></div>');
+                                chay();
+                                sessionStorage.setItem("z1", "");
+                                sessionStorage.setItem("z2", "");
+                                sessionStorage.setItem("z3", "");
+                                sessionStorage.setItem("z4", "");
+                            }
+                        });
+                });
+                function teamchungta() {
+                    sessionStorage.setItem("z1", document.getElementById("t3").value);
+                    sessionStorage.setItem("z2", document.getElementById("t4").value);
+                    sessionStorage.setItem("z3", document.getElementById("t5").value);
+                    sessionStorage.setItem("z4", document.getElementById("t6").value);
+                    var captcha1 = document.getElementById("captchacheck").value;
+                    var captcha2 = document.getElementById("captcha").value;
+                    if (captcha1 == captcha2) {
+                        location.reload(true);
+                    }
+                    else {
+                        $('#warning').css("display", "block");
+                    }
+                }
+                function chay() {
+                    $.ajax({
+                        url: '@Url.Content("~/")' + "SearchInvoice/getzip",
+                        type: 'POST',
+                        data: {
+                            zip: document.getElementById("ippp").value
+                        },
+                        dataType: 'json',
+                        success: function (data1) {
+                            var replace = data1.replace("logo.png", "..\\PDF\\logo.png");
+                            $("#genviewpdf").append(replace.replace("watermark.png", "../PDF/watermark.png"));
+                        },
+                        error: function (data2) {
+                            alert("LỖI HỆ THỐNG VUI LÒNG GỌI SỐ ĐIỆN THOẠI ĐỂ THÔNG BÁO");
+                        }
+                    });
+                }
+
+        </script>
+    </div>
+    <div class="modal fade" id="myModal3">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body" id="acc">
+
+                </div>
+
+                <button class="btn btn-info" id="downloadPDF">Download PDF</button>
+
+                <script>
+                    $('#downloadPDF').click(function () {
+                        document.querySelector("#genviewpdf").contentWindow.print();
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            DrawCaptcha()
+        });
+        function DrawCaptcha() {
+
+            var a = Math.ceil(Math.random() * 10) + '';
+
+            var b = Math.ceil(Math.random() * 10) + '';
+
+            var c = Math.ceil(Math.random() * 10) + '';
+
+            var d = Math.ceil(Math.random() * 10) + '';
+
+            var e = Math.ceil(Math.random() * 10) + '';
+
+            var f = Math.ceil(Math.random() * 10) + '';
+
+            var g = Math.ceil(Math.random() * 10) + '';
+
+            var code = randomStr(6);//random_character(1)+a + random_character(1) + c + random_character(1) + e + random_character(1) + g + random_character(1);
+
+            return code;
+
+        }
+        function randomStr(m) {
+            //var m = m || 9;
+            s = '', r = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            for (var i = 0; i < m; i++) {
+                s += r.charAt(Math.floor(Math.random() * r.length));
+            }
+            $('#captcha').val(s);
+        }</script>
+</div>
+

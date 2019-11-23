@@ -1,0 +1,303 @@
+﻿/*reponsive*/
+@media only screen and (max-width: 1024px) {
+    .bold-600{
+        font-size: 8pt !important;
+    }
+    #layout-nav {
+        background-color: white !important;
+        z-index: 2 !important;
+        border-radius: 7px !important
+    }
+    /*#Search*/
+    .search-box label {
+        font-size: 8pt !important;
+    }
+
+    .btn-box {
+        border-top: 1px solid #cec4c4;
+        background-color: #d5d5d5
+    }
+    .login-box {
+        background-color: rgba(255, 255, 255, 0.7);
+        background: rgba(255, 255, 255, 0.7);
+    }
+}
+/*all design*/
+input:focus, textarea {
+    outline: none !important;
+}
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+.bg-gradient-home {
+    background: rgb(104,181,255);
+    background: linear-gradient(90deg, rgba(104,181,255,0.9836309523809523) 0%, rgba(9,247,245,1) 18%, rgba(152,249,244,1) 47%, rgba(201,255,255,1) 82%);
+    height:70px;
+}
+.spacetop{
+    display: block;
+    height: 60px;
+}
+a.nav-link {
+    height: 100%;
+    line-height: 35px;
+}
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+    font-size: 19pt;
+    font-weight: 600;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px ;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px; /* Vertically center the text there */
+}
+/*Trang layout homepage*/
+.bold-600{
+    font-weight: 600;
+}
+#layout-nav ul li:hover {
+    background-color: white;
+    -webkit-box-shadow: 0px 0px 7px 0px rgba(126,157,158,1);
+    -moz-box-shadow: 0px 0px 7px 0px rgba(126,157,158,1);
+    box-shadow: 0px 0px 7px 0px rgba(126,157,158,1);
+    transition-duration: 0.19s;
+}
+#layout-nav ul li {
+    border-radius:9px;
+}
+    #layout-nav ul li:hover a {
+      
+        transition-duration: 0.19s;
+    }
+#layout-nav ul li a {
+    color: black;
+    font-size: 12pt;    
+}
+/*Trang home page index*/
+.carousel-control-next {
+    right: 0;
+    width: 110px !important;
+}
+.carousel-control-prev {
+    left: 0;
+    width: 110px !important;
+}
+
+.lbtitle {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    font-size: 20pt;
+    font-weight: 800;
+    margin-top: 1%;
+    text-align:center;
+}
+.carousel-item {
+    padding-bottom: 10px;
+    -webkit-box-shadow: -1px 6px 9px 1px rgba(89,89,89,1);
+    -moz-box-shadow: -1px 6px 9px 1px rgba(89,89,89,1);
+    box-shadow: -1px 6px 9px 1px rgba(89,89,89,1);
+}
+.txt {
+    padding: 0 50px 0 50px;
+}
+
+.box1, .box2, .box3, .box4 {
+    text-align: center;
+}
+
+.section-atb, .section-news {
+    background-color: #c8c8c8;
+}
+
+
+.atb {
+}
+
+
+
+.atbbox2 .atb p {
+    word-break: break-word;
+}
+
+.box3 {
+    font-size: 11pt;
+    height: auto;
+}
+
+.even {
+    height: 170px
+}
+
+.evenbox3 {
+    margin-top: 1%;
+    margin-bottom: 2%;
+    border-bottom: 1px solid #cac6c6;
+    height: 490px;
+}
+
+.even2box3 {
+    height: 400px
+}
+
+.imgbanner {
+    height: 450px
+}
+
+
+.section-login {
+    border: 1px solid #cec4c4;
+    border-radius: 10px;
+    padding: 20px 0px 0px 0px;
+}
+
+
+.border-radius-100 {
+    border-radius: 100%;
+    height: 10px !important;
+    width: 10px !important;
+    background-color: black;
+}
+
+.imgbanner {
+    width: 82%;
+}
+
+.direction {
+    color: black;
+    font-size: 25pt !important;
+}
+/*Trang tìm kiếm hóa đơn điện tử #search*/
+
+.search-box {
+    border: 1px solid;
+    height: 50px;
+    background-color: #0952e8;
+}
+.search-box label{
+    font-size: 1rem;
+    color: white;
+    display:block;
+    height:50%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.border-blue {
+    border-color: rgb(104,181,255);
+}
+.border-radius-30 {
+    border-radius: 30px;
+}
+.border-none{
+    border:none;
+}
+
+.btn-box {
+    border-top: 1px solid #cec4c4;
+    background-color: #d5d5d5
+}
+
+
+.btn-search {
+    height: 40px;
+    -webkit-box-shadow: 1px 4px 4px 0px rgba(126,157,158,0.75);
+    -moz-box-shadow: 1px 4px 4px 0px rgba(126,157,158,0.75);
+    box-shadow: 1px 4px 4px 0px rgba(126,157,158,0.75);
+}/*Trang đăng nhập*/
+.border-radius-5{
+    border-radius: 5px;
+}
+.border-radius-10 {
+    border-radius: 10px;
+}
+.height-35  {
+    height: 35px;
+}
+.align-right{
+    text-align: right;
+}
+.login-box {
+    border: 2px solid rgb(104,181,255);
+    -webkit-box-shadow: 0px 3px 13px 2px rgba(0,0,0,0.65);
+    -moz-box-shadow: 0px 3px 13px 2px rgba(0,0,0,0.65);
+    box-shadow: 0px 3px 13px 2px rgba(0,0,0,0.65);
+    background-color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.6);
+}
+.bg-img {
+
+    background-image: url('../images/backgroundlogin.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.btn_resetcaptcha{
+    height: 100% !important;
+
+    border-radius: 30px !important;
+}
+.border-blue {
+    border: 1px solid rgb(104,181,255);
+}
+#btnresetcapcha i{
+    line-height: 45px !important; 
+    margin-left:auto !important;
+
+}
+#btnresetcapcha {
+    padding-left: 15% !important;
+}
+#captcha{
+    font-size: 18pt;
+    font-weight: bold;
+    text-align: center;
+    word-spacing: 50px !important;
+    text-decoration: line-through;
+    font-family: Corbel
+
+}
